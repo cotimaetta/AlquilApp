@@ -10,7 +10,7 @@
 <body>
 
     <% if user_signed_in? %>
-        <h1>Bienvenido <%= current_user.email %> </h1>
+        <h1>Bienvenido <%= current_user.nombre %> <%= current_user.nombre %> </h1>
     <% else %>
         <h1>AlquilApp </h1>
     <% end %>
