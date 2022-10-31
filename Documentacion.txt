@@ -38,3 +38,7 @@ Tipo usuario -- rol
               0 admin
               1 super
               2 user
+
+-----------------------------------------------------------------------
+Estoy probando vscode
+Hola soy calvo esto es facil
