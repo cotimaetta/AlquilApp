@@ -10,4 +10,3 @@ class RegistrationsController < Devise::RegistrationsController
       params.require(:user).permit(:nombre, :apellido, :dni, :fecha_nac, :fecha_ven, :email, :password, :password_confirmation, :current_password)
     end
   end
-  
