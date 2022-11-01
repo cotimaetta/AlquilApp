@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patente: MyString
+  marca: MyString
+  modelo: MyString
+  cant_puertas: 1
+  descripcion: MyText
+  cant_combustible: 1.5
+
+two:
+  patente: MyString
+  marca: MyString
+  modelo: MyString
+  cant_puertas: 1
+  descripcion: MyText
+  cant_combustible: 1.5
