@@ -13,17 +13,6 @@
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>
-        <% @users.each do |u| %>
-            <tr>
-                <td>
-                    <% if u.foto.attached? %>
-                        <%= image_tag @auto.foto%>
-                    <%else%>
-                        <p>no ando</p>
-                    <% end %>
-                </td>
-            </tr>
-        <%end%>
     <% else %>
         <h1>AlquilApp </h1>
     <% end %>
