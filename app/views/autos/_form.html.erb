@@ -19,6 +19,8 @@
     <div><%= f.label :"cantidad combustible" %><br />
     <%= f.number_field :cant_combustible, in: 1..100, step: 0.1 %></div>
 
+    <div><%= f.file_field :foto %></div>
+
     <%= f.hidden_field :pos %>
     
     <%= f.submit 'Guardar' %> 
