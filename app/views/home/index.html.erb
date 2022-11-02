@@ -9,24 +9,7 @@
 </head>
 <body>
 
-    <%= form_with url: locations_path, html: { id: "location-form" } do |f| %>
-    <%= f.hidden_field :lat %>
-    <%= f.hidden_field :lng %>
-    <% end %>
-
-    <script>
-    navigator.geolocation.getCurrentPosition((pos) => {
-      document.querySelector("#lat").value = pos.coords.latitude;
-      document.querySelector("#lng").value = pos.coords.longitude;
-      document.querySelector("#location-form").requestSubmit();
-    });
-    </script>
-
-    <% if session[:lat] && session[:lng] %>
-        <p>Tu ubicación:</p>
-        <p><%= session[:lat] %>, <%= session[:lng] %></p>
-    <% end %>
-
+    <%= link_to "Twittear", new_auto_path%>
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>
