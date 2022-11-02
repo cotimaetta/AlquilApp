@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :dni, numericality: { only_integer: true } , uniqueness: true
   validate :menor
   validate :vencimiento
+
+
+  # variables
+  enum rol: [:admin, :supervisor, :usuario]
  
   def menor
     if(fecha_nac > 21.years.ago)
