@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :autos, only:[:create, :index, :new, :show]
   devise_for :users, :controllers => { registrations: 'registrations'}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
 
   #get "/bienvenida", to: "home#index"
 
+  get "autos/new"         => "autos#new"
+  get "autos/index"         => "autos#index"
+
   root "home#index"
-  
 end

@@ -1,0 +1,27 @@
+<script>
+    navigator.geolocation.getCurrentPosition((pos) => {document.querySelector("#auto_pos").value = `${pos.coords.latitude},${pos.coords.longitude}`;});
+</script>
+
+<%= form_with model: auto do |f| %> 
+    
+    <div><%= f.label :Patente %> <br />
+    <%= f.text_field :patente %></div>
+
+    <div><%= f.label :Marca %><br />
+    <%= f.text_field :marca %></div>
+    
+    <div><%= f.label :descripcion %><br />   
+    <%= f.text_area :descripcion %></div>
+    
+    <div><%= f.label :"cantidad puertas" %><br />
+    <%= f.number_field :cant_puertas, in: 1..20, step: 1 %> </div>
+    
+    <div><%= f.label :"cantidad combustible" %><br />
+    <%= f.number_field :cant_combustible, in: 1..100, step: 0.1 %></div>
+
+    <div><%= f.file_field :foto %></div>
+
+    <%= f.hidden_field :pos %>
+    
+    <%= f.submit 'Guardar' %> 
+<% end %>
