@@ -3,6 +3,14 @@ class AutosController < ApplicationController
     @auto = Auto.new
   end
 
+  def index
+    @autos = Auto.all
+  end
+
+  def show
+    @auto = Auto.find(params[:id])
+  end
+
   def create
     @auto = Auto.new(auto_params)
     if @auto.save

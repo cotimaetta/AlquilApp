@@ -1,1 +1,18 @@
-<p>andaindex?</p>
+
+<html>
+<body>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>       
+        <% @autos.each do |a| %>
+            <tr>
+                <td><%= link_to a.patente, a %></td>
+                <td><%= a.descripcion %></td>
+            </tr>
+        <% end %>
+    </table>
+    <%= link_to "Nuevo", new_auto_path%>
+</body>
+</html>

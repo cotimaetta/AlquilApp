@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #get "/bienvenida", to: "home#index"
 
   get "autos/new"         => "autos#new"
+  get "autos/index"         => "autos#index"
 
   root "home#index"
 end
