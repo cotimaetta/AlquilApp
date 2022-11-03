@@ -1,0 +1,8 @@
+<p>anda?show</p>
+<p><%=@auto.patente%></p>
+<p><%=@auto.pos%></p>
+<div>
+    <% if @auto.foto.attached? %>
+        <%= image_tag @auto.foto%>
+    <% end %>
+</div>
