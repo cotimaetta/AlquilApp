@@ -27,6 +27,8 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <div><%= f.file_field :foto %></div>  
+
   <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
 <% end %>
 

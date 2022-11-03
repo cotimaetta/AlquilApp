@@ -9,9 +9,15 @@
 </head>
 <body>
 
+    <%= link_to "Twittear", autos_path%>
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>
+    
+        <% if current_user.usuario? %>
+            <p> Iniciaste sesiòn como usuario </p>
+        <% end %>
+
     <% else %>
         <h1>AlquilApp </h1>
     <% end %>
