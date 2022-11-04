@@ -16,9 +16,14 @@
     
         <% if current_user.usuario? %>
             <p> Iniciaste sesiòn como usuario </p>
-            <%@fotouser.id_user = current_user.id%>
-            <%= render 'fotousers/form', fotouser: @fotouser %>
-            
+            <% @fotouser = Fotouser.find_by(id_user: current_user.id) %>
+            <%if @fotouser == nil%>                
+                <%@fotouser = Fotouser.new%>
+                <%@fotouser.id_user = current_user.id%>
+                <% if ! @fotouser.foto.attached? %>
+                    <%= render 'fotousers/form', fotouser: @fotouser %>
+                <%end%>
+            <%end%>
         <% end %>
 
     <% else %>
