@@ -1,0 +1,2 @@
+module FotousersHelper
+end

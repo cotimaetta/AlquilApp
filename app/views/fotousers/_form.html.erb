@@ -1,0 +1,8 @@
+<p><%id_user = @fotouser.id_user%></p>
+<%= form_for :fotouser, url: fotousers_path do |f| %>
+    <%= f.hidden_field :id_user %>
+
+    <div><%= f.file_field :foto %></div>
+    
+    <%= f.submit 'Guardar' %> 
+<% end %>

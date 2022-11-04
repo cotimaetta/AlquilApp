@@ -1,0 +1,11 @@
+<%= link_to "agregar foto", new_fotouser_path(:id_user => current_user.id)%>
+
+@fotouser = Fotouser.find(params[:id])
+@user = User.find(@fotouser.id_user)
+
+
+new
+    @fotouser = Fotouser.new
+    @fotouser.id_user = params[:id_user]
+
+<%id_user = @id_user%>

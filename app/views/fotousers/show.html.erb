@@ -1,0 +1,8 @@
+<h1>Fotousers#show</h1>
+<p>Find me in app/views/fotousers/show.html.erb</p>
+
+<p> <%= @user.nombre %> </p>
+
+<% if @fotouser.foto.attached? %>
+    <%= image_tag @fotouser.foto%>
+<% end %>

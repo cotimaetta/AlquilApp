@@ -1,0 +1,17 @@
+
+<html>
+<body>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+        </tr>       
+        <% @fotousers.each do |a| %>
+            <tr>
+                <td><%= link_to a.id_user, a %></td>
+            </tr>
+        <% end %>
+    </table>
+    <%= link_to "Nuevo", new_fotouser_path%>
+</body>
+</html>

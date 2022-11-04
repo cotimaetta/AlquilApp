@@ -16,6 +16,9 @@
     
         <% if current_user.usuario? %>
             <p> Iniciaste sesiòn como usuario </p>
+            <%@fotouser.id_user = current_user.id%>
+            <%= render 'fotousers/form', fotouser: @fotouser %>
+            
         <% end %>
 
     <% else %>
