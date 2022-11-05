@@ -9,12 +9,18 @@
 </head>
 <body>
 
-    <%= link_to "Twittear", autos_path%>
-    <%= link_to "super", supervisors_path%>
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>
     
+        <% if current_user.admin? %>
+            <%= link_to "Autos", autos_path%>
+        <%end%>
+
+        <% if current_user.supervisor? %>
+            <%= link_to "Validar usuario", supervisors_path%>
+        <%end%>
+
         <% if current_user.usuario? %>
             <p> Iniciaste sesiòn como usuario </p>
             <% @fotouser = Fotouser.find_by(id_user: current_user.id) %>

@@ -1,10 +1,31 @@
-<h1>Supervisors#index</h1>
-<p>Find me in app/views/supervisors/index.html.erb</p>
-<p>es el home de supervisor</p>
-<% @sinValidar.each do |u| %>
-    <tr>
-        <td><li><%= u.nombre %> <%= u.apellido %> <%= u.fecha_ven %> </li></td>
-        <td><li> <%= u.id %> </li></td>
-        <p> <%= link_to 'validar', supervisors_validar_path(:id => u.id), method: "validar" %></p>
-    </tr>
-<% end %>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validacion usurios</title>
+    <link rel="stylesheet" href="../../assests/stylesheets/aplication.css">
+</head>
+<body>
+    
+    <% if user_signed_in? %>
+        <% if current_user.supervisor? %>
+            <h1>Usuarios a validar</h1>
+            <% @sinValidar.each do |u| %>
+                <tr>
+                    <td><li><%= u.nombre %> <%= u.apellido %> <%= u.fecha_ven %> </li></td>
+                    <p> <%= link_to 'validar', supervisors_validar_path(:id => u.id), method: "Aprobar"%></p>
+                </tr>
+            <% end %>
+            <p> <%= link_to 'Volver inicio', root_path%></p>
+        <% end %>
+    <% else %>
+        <h1>AlquilApp </h1>
+    <% end %>
+</body>
+</html>
+
