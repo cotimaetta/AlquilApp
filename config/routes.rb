@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'supervisors/index'
+  get 'supervisors/show'
+  get 'supervisors/new'
+  get 'supervisors/create'
+  get 'supervisors/validar'
+  resources :supervisors, only:[:create, :index, :new, :show, :validar]
   resources :fotousers, only:[:create, :index, :new, :show]
   resources :autos, only:[:create, :index, :new, :show]
   devise_for :users, :controllers => { registrations: 'registrations'}

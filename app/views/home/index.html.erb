@@ -10,6 +10,7 @@
 <body>
 
     <%= link_to "Twittear", autos_path%>
+    <%= link_to "super", supervisors_path%>
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>
