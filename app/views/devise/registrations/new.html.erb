@@ -15,9 +15,6 @@
   <div><%= f.label :fecha_de_nacimiento %><br />
   <%= f.date_field :fecha_nac %></div>
 
-  <div><%= f.label :fecha_de_vencimiento_de_licencia_conducir %><br />
-  <%= f.date_field :fecha_ven %></div>
-
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
@@ -26,8 +23,6 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.file_field :foto %></div>  
 
   <div><%= f.submit t('.sign_up', :default => "Sign up") %></div>
 <% end %>
