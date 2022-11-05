@@ -22,7 +22,8 @@
         <%end%>
 
         <% if current_user.usuario? %>
-            <p> Iniciaste sesiòn como usuario </p>
+            <p> Iniciaste sesión como usuario </p>
+            <%= link_to "listado de autos para alquilar", autos_path%>
             <% @fotouser = Fotouser.find_by(id_user: current_user.id) %>
             <%if @fotouser == nil%>                
                 <%@fotouser = Fotouser.new%>

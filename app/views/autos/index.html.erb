@@ -1,18 +1,43 @@
 
 <html>
 <body>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-        </tr>       
-        <% @autos.each do |a| %>
-            <tr>
-                <td><%= link_to a.patente, a %></td>
-                <td><%= a.descripcion %></td>
-            </tr>
+    
+        <% if current_user.admin? %>
+            <%= link_to "Agregar auto", new_auto_path%>
+            <table>
+                <tr>
+                <th> Modelo </th>
+                <th> Descripción </th>
+                </tr>
+                <%autos.each do |a| %>
+                    <tr>
+                        <td> <% link_to a.marca, a %> </td>
+                        <td> <%= a.descripcion %>
+                        <td> <%= a.en_servicio%> </td>
+                    </tr>
+                <%end%>
+            </table>
+        <%end %>
+
+
+
+        <% if current_user.usuario? %>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </tr>       
+        
+                <% @autos.each do |a| %>
+                    <% if !a.alquilado? %>
+                        <tr>
+                            <td><%= link_to a.marca, a %></td>
+                            <td><%= a.descripcion %></td>
+                        </tr>
+                    <%end%>
+                <%end%>
+            </table>
         <% end %>
-    </table>
-    <%= link_to "Nuevo", new_auto_path%>
+    
 </body>
 </html>
