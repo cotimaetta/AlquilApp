@@ -1,6 +1,6 @@
 class SupervisorsController < ApplicationController
   def index
-    @sinValidar = User.where(validacion: false)
+    @sinValidar = User.where(validacion: false).order(fecha_ven: :asc)
     @usuarios = User.where(rol:2).order(fecha_ven: :asc)
   end
 
