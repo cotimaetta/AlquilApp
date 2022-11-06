@@ -8,13 +8,16 @@ class AutosController < ApplicationController
   end
 
   def dejar
-    @a = User.find(params[:id])
-    @a.validacion = true
-    @a.save
-    redirect_to supervisors_path
+    @auto = Auto.find(params[:id])
   end
+  
+  def update
+    @auto = Auto.find params[:id]
+    @auto.update!(auto_params)
+    redirect_to root_path
+ end
 
-  def alquilar 
+ def alquilar 
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: true)
     

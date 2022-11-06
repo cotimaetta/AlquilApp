@@ -1,7 +1,7 @@
 <h1> <%= @auto.marca%> </h1>
 <p> <%= @auto.descripcion %>
 <p><%=@auto.patente%></p>
-<%= link_to "dejar", autos_dejar_path%>
+<%= link_to "dejar", autos_dejar_path(:id => @auto.id), method: "dejar"%>
 <p>aca pos</p>
 <p><%=@auto.location_point%></p>
 <p>aca pos</p>
