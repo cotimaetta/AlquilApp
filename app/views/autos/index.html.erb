@@ -27,16 +27,24 @@
                     <th>Nombre</th>
                     <th>Descripción</th>
                 </tr>       
-        
+                
                 <% @autos.each do |a| %>
-                    <% if !a.alquilado? %>
+                    <% if !a.alquilado? && a.en_servicio ='nils'  %>
                         <tr>
-                            <td><%= link_to a.marca, a %></td>
+                            <% @cantidad = @cantidad + 1 %>
+                            <td><%= a.marca %></td>
                             <td><%= a.descripcion %></td>
+                            <td> <%= link_to "DETALLES" , a%>
                         </tr>
                     <%end%>
                 <%end%>
+                
             </table>
+
+                <% if @cantidad == 0  %>
+                    <h1> no hay autos disponibles en este momento </h1> 
+                <% end %>
+            
         <% end %>
     
 </body>

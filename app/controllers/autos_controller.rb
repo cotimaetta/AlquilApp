@@ -1,7 +1,22 @@
 class AutosController < ApplicationController
   def new
     @auto = Auto.new
+  end 
+
+  def initialize 
+    @cantidad = 0 
   end
+
+  def alquilar 
+    @auto = Auto.find(params[:id])
+    @auto.update(alquilado: true)
+    
+    @historial = Historial_de_uso.new
+
+
+    redirect_to autos_path 
+  end 
+
 
   def index
     @autos = Auto.all
@@ -24,4 +39,5 @@ class AutosController < ApplicationController
   def auto_params
     params.require(:auto).permit(:patente, :marca, :descripcion, :cant_puertas, :cant_combustible, :pos, :foto)
   end
+
 end
