@@ -64,15 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_232246) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "historial_de_uso", force: :cascade do |t|
-    t.datetime "inicio_alquiler"
-    t.datetime "fin_alquiler"
-    t.float "tiempo_alquiler"
-    t.float "monto"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
