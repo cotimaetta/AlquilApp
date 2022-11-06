@@ -1,0 +1,7 @@
+<h1>Autos#dejar</h1>
+<%= form_with model: @auto do |f| %> 
+    
+    <div><%= f.label :Patente %> <br />
+    <%= f.hidden_field :pos %>
+    <%= f.submit 'Dejar' %> 
+<% end %>

@@ -3,6 +3,13 @@ class AutosController < ApplicationController
     @auto = Auto.new
   end
 
+  def dejar
+    @a = User.find(params[:id])
+    @a.validacion = true
+    @a.save
+    redirect_to supervisors_path
+  end
+
   def index
     @autos = Auto.all
   end

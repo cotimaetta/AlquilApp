@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_132959) do
     t.float "cant_combustible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pos"
+    t.integer "location_point"
   end
 
   create_table "fotousers", force: :cascade do |t|

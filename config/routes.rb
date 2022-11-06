@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'autos/dejar'
   get 'supervisors/index'
   get 'supervisors/show'
   get 'supervisors/new'
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   get 'supervisors/validar'
   resources :supervisors, only:[:create, :index, :new, :show, :validar]
   resources :fotousers, only:[:create, :index, :new, :show]
-  resources :autos, only:[:create, :index, :new, :show]
+  resources :autos, only:[:create, :index, :new, :show, :dejar]
   devise_for :users, :controllers => { registrations: 'registrations'}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

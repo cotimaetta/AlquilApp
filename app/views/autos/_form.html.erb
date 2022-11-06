@@ -1,5 +1,8 @@
 <script>
-    navigator.geolocation.getCurrentPosition((pos) => {document.querySelector("#auto_pos").value = `${pos.coords.latitude},${pos.coords.longitude}`;});
+navigator.geolocation.getCurrentPosition((pos) => {
+  document.querySelector("#auto_pos").value =
+    `${pos.coords.latitude},${pos.coords.longitude}`;
+});
 </script>
 
 <%= form_with model: auto do |f| %> 
