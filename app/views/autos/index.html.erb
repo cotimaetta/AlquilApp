@@ -9,7 +9,7 @@
                 <th> Modelo </th>
                 <th> Descripción </th>
                 </tr>
-                <%autos.each do |a| %>
+                <% @autos.each do |a| %>
                     <tr>
                         <td> <% link_to a.marca, a %> </td>
                         <td> <%= a.descripcion %>
