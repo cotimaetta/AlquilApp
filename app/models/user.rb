@@ -7,10 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nombre, :apellido, :email, presence:true
+  validates :email, presence:true, uniqueness: true
   #validates :fecha_nac, :fecha_ven, presence:true
   validates :dni, numericality: { only_integer: true } , uniqueness: true
   validate :menor
-  validate :vencimiento
 
 
   # variables
@@ -28,16 +28,16 @@ class User < ApplicationRecord
     end
   end
 
-  def vencimiento
-    if(usuario?)
-      if fecha_nac != nil
-        if Date.today > fecha_ven
-          errors.add(:base ,message:"Tenes tu licencia de conducir vencida")
-        end
-      else
-          errors.add(:base ,message:"Debes ingresar la fecha de vencimiento de tu licencia de conducir")
-      end
-    end
-  end
+  #def vencimiento
+  #  if(usuario?)
+   #   if fecha_nac != nil
+    #    if Date.today > fecha_ven
+     #     errors.add(:base ,message:"Tenes tu licencia de conducir vencida")
+      #  end
+ #     else
+  #        errors.add(:base ,message:"Debes ingresar la fecha de vencimiento de tu licencia de conducir")
+   #   end
+    #end
+ # end
 
 end

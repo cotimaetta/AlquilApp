@@ -1,9 +1,14 @@
-<p>anda?show</p>
+<h1> <%= @auto.marca%> </h1>
+<p> <%= @auto.descripcion %>
 <p><%=@auto.patente%></p>
 <%= link_to "dejar", autos_dejar_path%>
 <p><%=@auto.pos%></p>
+<p> <%=@auto.cant_puertas %> </p>
+
 <div>
     <% if @auto.foto.attached? %>
         <%= image_tag @auto.foto%>
     <% end %>
 </div>
+
+<%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id) , method: "Alquilar" %>
