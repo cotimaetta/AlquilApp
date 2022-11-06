@@ -44,7 +44,7 @@ class AutosController < ApplicationController
   private
 
   def auto_params
-    params.require(:auto).permit(:patente, :marca, :descripcion, :cant_puertas, :cant_combustible, :pos, :foto)
+    params.require(:auto).permit(:patente, :marca, :descripcion, :cant_puertas, :cant_combustible, :location_point, :foto)
   end
 
 end

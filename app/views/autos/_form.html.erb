@@ -1,6 +1,6 @@
 <script>
 navigator.geolocation.getCurrentPosition((pos) => {
-  document.querySelector("#auto_pos").value =
+  document.querySelector("#auto_location_point").value =
     `${pos.coords.latitude},${pos.coords.longitude}`;
 });
 </script>
@@ -9,6 +9,9 @@ navigator.geolocation.getCurrentPosition((pos) => {
     
     <div><%= f.label :Patente %> <br />
     <%= f.text_field :patente %></div>
+
+    <div><%= f.label :Modelo %> <br />
+    <%= f.text_field :modelo %></div>
 
     <div><%= f.label :Marca %><br />
     <%= f.text_field :marca %></div>
@@ -24,7 +27,7 @@ navigator.geolocation.getCurrentPosition((pos) => {
 
     <div><%= f.file_field :foto %></div>
 
-    <%= f.hidden_field :pos %>
+    <%= f.hidden_field :location_point %>
     
     <%= f.submit 'Guardar' %> 
 <% end %>
