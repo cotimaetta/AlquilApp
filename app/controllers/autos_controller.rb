@@ -20,10 +20,6 @@ class AutosController < ApplicationController
  def alquilar 
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: true)
-    
-    @historial = Historial_de_uso.new
-
-
     redirect_to autos_path 
   end 
 

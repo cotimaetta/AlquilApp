@@ -9,3 +9,8 @@
 
     User.create(email: "admin@gmail.com", password: "administrador", nombre: "Admin", apellido: "Admin", dni: "1", rol: "admin")
     User.create(email: "supervisor@gmail.com", password: "supervisor", nombre: "Supervisor", apellido: "Supervisor", dni: "2",  rol: "supervisor")
+
+    Auto.create(patente: "abc1234", marca: "audi", modelo:"a8", cant_puertas: "4", descripcion: "Auto de alta gama. Color negro. Muy buen estado, sin ningun choque. Tiene aire acondicionado, bluetooth y cuenta con caja automatica.", cant_combustible: "50", pos: "nil", alquilado: "false", en_servicio: "true" ) 
+    Auto.create(patente: "led321", marca: "toyota", modelo:"corolla", cant_puertas: "4", descripcion: "Color Champagne. Modelo 2016.  Muy buen estado, sin ningun choque. Tiene aire acondicionado, bluetooth y cuenta con caja automatica.", cant_combustible: "50", pos: "nil", alquilado: "false", en_servicio: "true" ) 
+    Auto.create(patente: "kap748", marca: "Volksvagen", modelo:"fox", cant_puertas: "2", descripcion: "Color gris. Muy buen estado, sin ningun choque. Tiene aire acondicionado, bluetooth y cuenta con caja de cambios manual. ", cant_combustible: "50", pos: "nil", alquilado: "false", en_servicio: "true" ) 
+    
