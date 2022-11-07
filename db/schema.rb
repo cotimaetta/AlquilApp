@@ -48,7 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_003241) do
     t.float "cant_combustible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "location_point"
+    t.string "location_point_x"
+    t.string "location_point_y"
     t.boolean "alquilado"
     t.boolean "en_servicio"
   end
