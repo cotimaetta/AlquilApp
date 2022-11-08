@@ -8,13 +8,20 @@
                 <tr>
                 <th> Modelo </th>
                 <th> Descripción </th>
+                <th> Descripción </th>
+                <th> Descripción </th>
                 </tr>
                 <% @autos.each do |a| %>
                     <tr>
-                        <td> <% link_to a.marca, a %> </td>
-                        <td> <%= a.descripcion %>
-                        <td> <%= a.en_servicio%> </td>
-                    </tr>
+                        <td> <%= link_to a.marca, a %> </td>
+                        <td> <%= a.marca %> </td>
+                        <td> <%= a.descripcion %> </td>
+                        <% if a.en_servicio %> 
+                            <td> En servicio </td>
+                        <% else %> 
+                            <td> Fuera de servicio </td>
+                        <% end %> 
+                </tr>
                 <%end%>
             </table>
         <%end %>
