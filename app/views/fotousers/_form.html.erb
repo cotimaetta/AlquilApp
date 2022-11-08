@@ -2,7 +2,8 @@
 <%= form_for :fotouser, url: fotousers_path do |f| %>
     <%= f.hidden_field :id_user %>
 
-    <div><%= f.file_field :foto %></div>
+    <div><%= f.file_field :fotoDNI %></div>
+    <div><%= f.file_field :fotoCarnet %></div>
     
     <%= f.submit 'Guardar' %> 
 <% end %>
