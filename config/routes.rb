@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'usuarios/show'
+  get 'usuarios/index'
+  get 'usuarios/new'
+
+  
   get 'historialusos/index'
   get 'historialusos/new'
   get 'historialusos/show'

@@ -1,0 +1,33 @@
+<h1>Usuarios#show</h1>
+<p>Find me in app/views/usuarios/show.html.erb</p>
+
+
+
+
+<h1> <%= @usuario.nombre%> </h1>
+<p> <%= @usuario.apellido %>
+<p><%=@usuario.dni%></p>
+
+<p><%=@usuario.fecha_nac%></p>
+<p><%=@usuario.fecha_ven%></p>
+<% if @usuario.validacion == false %>
+    <h3> Usuario no validado </h3>
+<%else%>  
+    <h3> usuario validado </h3>
+<%end %> 
+
+
+<div>
+
+    <% if @foto.fotoDNI.attached?  &&  @foto.fotoCarnet.attached? %>
+        <%= image_tag @foto.fotoDNI%>
+
+        <%= image_tag @foto.fotoCarnet%>
+        AYUDA ACA  A A A A A A A 
+        <p> <%= link_to 'validar', supervisors_validar_path(:id => current_user.id), method: "Aprobar" %></p>
+
+
+    <% end %>
+    <p> <%= link_to 'Volver inicio', _index_path %></p>
+</div>
+
