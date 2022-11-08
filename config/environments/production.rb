@@ -94,22 +94,25 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  #AGREGO COTI 
+  # Para el mail de devise (creo)
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
+
+
+  #AGREGO COTI 
+
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.office365.com",
     port: 587,
     domain: "gmail.com",
     authentication: "plain",
     
-    user_name: "cotimaetta@gmail.com",
-    password: "Constanza41320703.", 
+    user_name: "cotymaetta@outlook.com",
+    password: "Constanza0703*", 
 
     enable_starttls_auto: true,
     :openssl_verify_mode => 'none'  # This line added and it works fine
   
   }
-  
 
 end
