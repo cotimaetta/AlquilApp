@@ -6,15 +6,15 @@
             <%= link_to "Agregar auto", new_auto_path%>
             <table>
                 <tr>
+                <th> Marca </th>
                 <th> Modelo </th>
                 <th> Descripción </th>
-                <th> Descripción </th>
-                <th> Descripción </th>
+                <th> Estado </th>
                 </tr>
                 <% @autos.each do |a| %>
                     <tr>
                         <td> <%= link_to a.marca, a %> </td>
-                        <td> <%= a.marca %> </td>
+                        <td> <%= a.modelo %> </td>
                         <td> <%= a.descripcion %> </td>
                         <% if a.en_servicio %> 
                             <td> En servicio </td>
