@@ -3,6 +3,9 @@
 
 <p> <%= @user.nombre %> </p>
 
-<% if @fotouser.foto.attached? %>
-    <%= image_tag @fotouser.foto%>
+<% if @fotouser.fotoDNI.attached? %>
+    <%= image_tag @fotouser.fotoDNI%>    
+<% end %>
+<% if @fotouser.fotoDNI.attached? %>
+    <%= image_tag @fotouser.fotoCarnet%>
 <% end %>

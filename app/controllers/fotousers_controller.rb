@@ -1,7 +1,6 @@
 class FotousersController < ApplicationController
   def new
     @fotouser = Fotouser.new
-    #@fotouser.id_user = params[:id_user]
   end
 
   def index
@@ -24,6 +23,6 @@ class FotousersController < ApplicationController
   private
 
   def fotouser_params
-    params.require(:fotouser).permit(:id_user, :foto)
+    params.require(:fotouser).permit(:id_user, :fotoDNI, :fotoCarnet)
   end
 end

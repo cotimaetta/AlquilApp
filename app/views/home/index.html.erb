@@ -27,7 +27,7 @@
             <%if @fotouser == nil%>                
                 <%@fotouser = Fotouser.new%>
                 <%@fotouser.id_user = current_user.id%>
-                <% if ! @fotouser.foto.attached? %>
+                <% if ! (@fotouser.fotoDNI.attached? or @fotouser.fotoCarnet.attached?) %>
                     <%= render 'fotousers/form', fotouser: @fotouser %>
                 <%end%>
             <%end%>
