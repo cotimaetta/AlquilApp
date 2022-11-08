@@ -1,6 +1,6 @@
 class Auto < ApplicationRecord
     has_one_attached :foto
-    has_many :historial_de_uso
+    has_many :historialusos
     
     
 end

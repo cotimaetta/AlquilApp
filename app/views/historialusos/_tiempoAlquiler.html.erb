@@ -1,0 +1,8 @@
+<%= form_with model: historial do |f| %> 
+    
+    <div><%= f.label :"cantidad horas" %><br />
+    <%= f.number_field :cant_horas %></div>
+
+    
+    <%= f.submit 'Guardar' %> 
+<% end %>

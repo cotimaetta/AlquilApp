@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
+  get 'historialusos/index'
+  get 'historialusos/new'
+  get 'historialusos/show'
+  get 'historialusos/cambiarhoras'
+
   get 'autos/dejar'
+  get 'autos/alquilar'
+
   get 'supervisors/index'
   get 'supervisors/show'
   get 'supervisors/new'
   get 'supervisors/create'
   get 'supervisors/validar'
-  get 'autos/alquilar'
+
+
+  resources :historialusos, only:[:create, :index, :new, :show, :update, :cambiarhoras]
   resources :supervisors, only:[:create, :index, :new, :show, :validar]
   resources :fotousers, only:[:create, :index, :new, :show]
   resources :autos, only:[:create, :index, :new, :show, :alquilar, :dejar, :update]
@@ -16,6 +25,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   #get "/bienvenida", to: "home#index"
+
+
 
   get "autos/new"         => "autos#new"
   get "autos/index"         => "autos#index"
