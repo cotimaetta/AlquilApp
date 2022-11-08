@@ -23,11 +23,11 @@
         <%= image_tag @foto.fotoDNI%>
 
         <%= image_tag @foto.fotoCarnet%>
-        AYUDA ACA  A A A A A A A 
-        <p> <%= link_to 'validar', supervisors_validar_path(:id => current_user.id), method: "Aprobar" %></p>
+        
+        <p> <%= link_to 'validar', supervisors_validar_path(:id => @usuario.id), method: "validar" %></p>
 
 
     <% end %>
-    <p> <%= link_to 'Volver inicio', _index_path %></p>
+    <p> <%= link_to 'Volver', supervisors_index_path %></p>
 </div>
 
