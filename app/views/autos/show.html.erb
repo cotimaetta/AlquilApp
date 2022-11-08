@@ -1,3 +1,10 @@
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+<script>
+  mapboxgl.accessToken = "<%= Rails.application.credentials.mapbox %>";
+</script>
+<script src="https://unpkg.com/mapkick@0.1.1/dist/mapkick.js"></script>
+
 <h1> <%= @auto.marca%> </h1>
 <p> <%= @auto.descripcion %>
 <p><%=@auto.patente%></p>
@@ -17,3 +24,13 @@
 <%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id) , method: "Alquilar" %>
 
 <div id="map" style="height: 400px"></div>
+	 
+<script>
+  new Mapkick.Map("map", [
+    {
+      latitude: <%= @auto.location_point_x %>,
+      longitude: <%= @auto.location_point_y %>,
+      tooltip: '<%= @auto.modelo %>'
+    }
+  ]);
+</script>

@@ -1,12 +1,19 @@
 <script>
 navigator.geolocation.getCurrentPosition((pos) => {
-  document.querySelector("#auto_location_point").value =
-    `${pos.coords.latitude},${pos.coords.longitude}`;
+  document.querySelector("#auto_location_point_x").value =
+    `${pos.coords.latitude}`;
+});
+navigator.geolocation.getCurrentPosition((pos) => {
+  document.querySelector("#auto_location_point_y").value =
+    `${pos.coords.longitude}`;
 });
 </script>
 
+
 <%= form_with model: auto do |f| %> 
-    <%= f.hidden_field :location_point %>
-    
-    <%= f.submit 'dejar el auto' %> 
+  
+  <%= f.hidden_field :location_point_x %>
+  <%= f.hidden_field :location_point_y %>
+
+  <%= f.submit 'dejar el auto' %> 
 <% end %>
