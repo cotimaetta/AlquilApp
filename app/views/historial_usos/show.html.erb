@@ -2,9 +2,10 @@
 
 <%= render @historial_uso %>
 
+<%if current_user.admin? %>
 <div>
   <%= link_to "Edit this historial uso", edit_historial_uso_path(@historial_uso) %> |
   <%= link_to "Back to historial usos", historial_usos_path %>
- <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %>
   <%= button_to "Destroy this historial uso", @historial_uso, method: :delete %>
 </div>
+<%end%>
