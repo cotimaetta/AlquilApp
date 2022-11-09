@@ -1,4 +1,11 @@
 
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+    <script>
+      mapboxgl.accessToken = "pk.eyJ1IjoibWF0aWFzY2Fsdm8iLCJhIjoiY2xhN2dicDdyMDJmbTN1bGltNzgxemVnNiJ9.q53AjhcWdf-mN5luAw0TDg";
+    </script>
+    <script src="https://unpkg.com/mapkick@0.1.1/dist/mapkick.js"></script>
+    
 <html>
 <body>
         <%if current_user.supervisor? %>
@@ -63,9 +70,18 @@
                     <th>Descripción</th>
                 </tr>       
                 
+                <script>
+                let pos = []
+                </script>
+
                 <% @autos.each do |a| %>
                     <% if a.alquilado==false && a.en_servicio == true   %>
                         <tr>
+                            <script>pos.unshift({
+                                latitude: <%= a.location_point_x %>,
+                                longitude: <%= a.location_point_y %>,
+                                tooltip: '<%= a.marca %>'
+                                })</script>
                             <% @cantidad = @cantidad + 1 %>
                             <td><%= a.marca %></td>
                             <td><%= a.modelo %></td>
@@ -74,6 +90,11 @@
                     <%end%>
                 <%end%>
 
+                <div id="map" style="height: 400px"></div>
+                
+                <script>
+                new Mapkick.Map("map", pos);
+                </script>                
 
                 
             </table>
