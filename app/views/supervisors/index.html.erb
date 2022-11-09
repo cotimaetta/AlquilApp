@@ -16,21 +16,22 @@
         
         <% if current_user.supervisor? %>
             <h1>Usuarios a validar</h1>
+            <table>
+            <th> 
+                <tr> Nombre </tr> 
+                <tr> Apellido </tr> 
+                <tr> Fecha vencimiento  </tr> 
+            </th>
             <% @sinValidar.each do |u| %>
-                <table>
-                <th> 
-                    <td> nombre </td> 
-                    <td> apellido </td> 
-                    <td> fecha vencimiento  </td> 
-                     
-                </th>
                 <tr>
-                    <td><li><%=  u.nombre %> <%= u.apellido %> <%= u.fecha_ven %> </li></td>
-                    <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
-                    
+                    <td>
+                        <%=  u.nombre %> <%= u.apellido %> <%= u.fecha_ven %>
+                        <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                    </td>
                 </tr>
-                </table>
+                
             <% end %>
+            </table>
             <p> <%= link_to 'Volver inicio', root_path%></p>
         <% end %>
     <% else %>
