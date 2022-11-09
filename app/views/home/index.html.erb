@@ -9,8 +9,7 @@
 <body>
 
     <% if user_signed_in? %>
-        <h1>Bienvenido <%= current_user.email %> </h1>
-        <h1><%= current_user.nombre%> </h1>
+        <h1>Bienvenido <%= current_user.nombre%> </h1>
     
         <% if current_user.admin? %>
             <%= link_to "Autos", autos_path%>
@@ -21,14 +20,7 @@
         <%end%>
 
         <% if current_user.usuario? %>
-            <% if @alerta %>
-        <div class="alert alert-warning alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong> <%= @alerta %> </strong>
-        </div>
-      <% end %>
-            <p> Iniciaste sesión como usuario </p>
-            <%= link_to "listado de autos para alquilar", autos_path%>
+
             <% @fotouser = Fotouser.find_by(id_user: current_user.id) %>
             <%if @fotouser == nil%>                
                 <%@fotouser = Fotouser.new%>
@@ -36,6 +28,14 @@
                 <% if ! (@fotouser.fotoDNI.attached? or @fotouser.fotoCarnet.attached?) %>
                     <%= render 'fotousers/form', fotouser: @fotouser %>
                 <%end%>
+            <%else%>
+                <% if current_user.validacion? %>
+                    <p> Saldo: <%= current_user.saldo %> </p>
+                    <%= link_to "listado de autos para alquilar", autos_path%>
+                <% else %>
+                    <p> Para poder alquilar un auto debe ser validado por un supervisor </p>
+                    <p> Sea paciente.. </p>
+                <% end %>
             <%end%>
         <% end %>
 
