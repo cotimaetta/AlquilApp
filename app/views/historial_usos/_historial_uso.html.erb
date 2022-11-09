@@ -29,7 +29,11 @@
 
   <p>
   <strong>Cantidad horas extras:</strong>
-    <%= historial_uso.horasExtra %>
+    <% if historial_uso.horasExtra == nil%>
+      0
+    <% else %>
+      <%= historial_uso.horasExtra %>
+    <% end %>    
   </p>
 
   <p>
@@ -39,7 +43,11 @@
 
   <p>
   <strong>Monto horas extra:</strong>
-    <%= historial_uso.horasExtra * 1500%>
+    <% if historial_uso.horasExtra == nil%>
+      0
+    <% else %>
+      <%= historial_uso.horasExtra * 1500%>
+    <% end %>
   </p>
 
   <p>
