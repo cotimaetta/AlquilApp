@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
+  resources :historial_usos
   get 'usuarios/show'
   get 'usuarios/index'
   get 'usuarios/new'
-
-  
-  get 'historialusos/index'
-  get 'historialusos/new'
-  get 'historialusos/show'
-  get 'historialusos/cambiarhoras'
 
   get 'autos/dejar'
   get 'autos/alquilar'
@@ -20,7 +15,6 @@ Rails.application.routes.draw do
   get 'supervisors/validar'
 
 
-  resources :historialusos, only:[:create, :index, :new, :show, :update, :cambiarhoras]
   resources :supervisors, only:[:create, :index, :new, :show, :validar]
   resources :fotousers, only:[:create, :index, :new, :show]
   resources :autos, only:[:create, :index, :new, :show, :alquilar, :dejar, :update, :mostrardocumentacion]

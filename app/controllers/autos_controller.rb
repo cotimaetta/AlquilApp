@@ -24,11 +24,7 @@ class AutosController < ApplicationController
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: true)
 
-    @usuario = User.find(current_user.id)
-    
-    @historial = Historialuso.create(fecha_inicio: DateTime.now, user: @usuario, auto: @auto)
-
-    redirect_to historialusos_cambiarhoras_path(@historial.id)
+    redirect_to new_historial_uso_path(:id_auto => @auto.id)
 
   end 
 
@@ -41,7 +37,6 @@ class AutosController < ApplicationController
   end
 
   def show
-    @historial = Historialuso.last
     @auto = Auto.find(params[:id])
   end
 

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  monto: 1.5
+  fechaInicio: 2022-11-08 21:35:43
+  fechaFinal: 2022-11-08 21:35:43
+  cantHoras: 1
+  user: one
+  auto: one
+
+two:
+  monto: 1.5
+  fechaInicio: 2022-11-08 21:35:43
+  fechaFinal: 2022-11-08 21:35:43
+  cantHoras: 1
+  user: two
+  auto: two
