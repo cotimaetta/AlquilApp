@@ -48,6 +48,7 @@ class AutosController < ApplicationController
   def index
     @autos = Auto.all
     @auto = Auto.last
+    @cant = Auto.where(en_servicio: true, alquilado: false).count 
   end
 
   def show

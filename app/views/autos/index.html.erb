@@ -64,10 +64,12 @@
 
 
         <% if current_user.usuario? %>
+            <% if  @cant != 0 %>
             <table>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
+                    <th><h3>Auto</h3></th>
+                    <th><h3>Descripción</h3></th>
+                    <th><h3> Detalles</h3></th>
                 </tr>       
                 
                 <script>
@@ -82,7 +84,7 @@
                                 longitude: <%= a.location_point_y %>,
                                 tooltip: '<%= a.marca %>'
                                 })</script>
-                            <% @cantidad = @cantidad + 1 %>
+                            
                             <td><%= a.marca %></td>
                             <td><%= a.modelo %></td>
                             <td> <%= link_to "DETALLES" , a%>
@@ -95,13 +97,12 @@
                 <script>
                 new Mapkick.Map("map", pos);
                 </script>                
-
+                
                 
             </table>
-
-                <% if @cantidad == 0  %>
-                    <h1> no hay autos disponibles en este momento </h1> 
-                <% end %>
+            <%else %>
+                No hay autos disponibles para alquilar 
+            <%end%>
             
         <% end %>
     
