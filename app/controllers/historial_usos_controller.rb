@@ -2,8 +2,7 @@ class HistorialUsosController < ApplicationController
   before_action :set_historial_uso, only: %i[ show edit update destroy agregarHoras]
 
   def agregarHoras
-    
-    redirect_to edit_historial_uso_path(@historial)
+    @historial = HistorialUso.last
   end
 
   # GET /historial_usos or /historial_usos.json
