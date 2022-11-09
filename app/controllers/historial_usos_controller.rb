@@ -3,6 +3,8 @@ class HistorialUsosController < ApplicationController
 
   def agregarHoras
     @historial = HistorialUso.last
+    #@historial_uso = HistorialUso.where(user_id: params[:id_user],fechaFinal: nil)
+    redirect_to edit_historial_uso_path(@historial)
   end
 
   # GET /historial_usos or /historial_usos.json
