@@ -22,7 +22,7 @@ class User < ApplicationRecord
     if(usuario?)
       if fecha_nac != nil
         if fecha_nac > 21.years.ago
-          errors.add(:base ,message:"no tenes edad para manejar")
+          errors.add(:base ,message:"No tenes edad para manejar. Debes tener 21 años o mas")
         end
       else
           errors.add(:base ,message:"Debes ingresar tu fecha de nacimiento")

@@ -23,7 +23,9 @@
         <% if current_user.usuario? %>
 
             <% @fotouser = Fotouser.find_by(id_user: current_user.id) %>
-            <%if @fotouser == nil%>                
+            <%if @fotouser == nil%>    
+                <h3> Ultimos pasos para finalizar tu registro.. </h3>
+                <p> Ingresa foto de carnet y de conducir </p>            
                 <%@fotouser = Fotouser.new%>
                 <%@fotouser.id_user = current_user.id%>
                 <% if ! (@fotouser.fotoDNI.attached? or @fotouser.fotoCarnet.attached?) %>
