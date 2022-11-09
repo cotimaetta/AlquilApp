@@ -5,6 +5,7 @@ class Historialusos < ActiveRecord::Migration[7.0]
       t.datetime :fecha_fin
       t.float :cant_horas
       t.float :monto
+      t.intager :horasExtra
 
       t.references :user, null: false, foreign_key: true
       t.references :auto, null: false, foreign_key: true
