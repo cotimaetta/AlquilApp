@@ -15,6 +15,8 @@
         <% if current_user.admin? %>
             <%= link_to "Autos", autos_path%>
         <%end%>
+        <% @h = Historialuso.last %>
+        <%= link_to "Comprobante", historialusos_show_path(@h.id) %>
 
         <% if current_user.supervisor? %>
             <%= link_to "Validar usuario", supervisors_path%>
