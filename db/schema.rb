@@ -48,8 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_062159) do
     t.float "cant_combustible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "location_point_x"
     t.string "location_point_y"
+    t.string "location_point_x"
     t.boolean "alquilado", default: false
     t.boolean "en_servicio", default: true
   end
@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_062159) do
     t.datetime "fechaInicio"
     t.datetime "fechaFinal"
     t.integer "cantHoras"
+    t.integer "horasExtra"
     t.integer "user_id", null: false
     t.integer "auto_id", null: false
     t.datetime "created_at", null: false
