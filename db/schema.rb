@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_010510) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_08_002937) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,8 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010510) do
     t.datetime "updated_at", null: false
     t.string "location_point_y"
     t.string "location_point_x"
-    t.boolean "alquilado", default: false
-    t.boolean "en_servicio", default: false
+    t.boolean "alquilado"
+    t.boolean "en_servicio"
   end
 
   create_table "fotousers", force: :cascade do |t|
@@ -60,18 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010510) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "historial_usos", force: :cascade do |t|
+  create_table "historialusos", force: :cascade do |t|
+    t.datetime "fecha_inicio"
+    t.datetime "fecha_fin"
+    t.float "cant_horas"
     t.float "monto"
-    t.datetime "fechaInicio"
-    t.datetime "fechaFinal"
-    t.integer "cantHoras"
-    t.integer "horasExtra"
     t.integer "user_id", null: false
     t.integer "auto_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["auto_id"], name: "index_historial_usos_on_auto_id"
-    t.index ["user_id"], name: "index_historial_usos_on_user_id"
+    t.index ["auto_id"], name: "index_historialusos_on_auto_id"
+    t.index ["user_id"], name: "index_historialusos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,6 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010510) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "historial_usos", "autos"
-  add_foreign_key "historial_usos", "users"
+  add_foreign_key "historialusos", "autos"
+  add_foreign_key "historialusos", "users"
 end

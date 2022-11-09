@@ -31,7 +31,6 @@ navigator.geolocation.getCurrentPosition((pos) => {
     <%= f.number_field :cant_combustible, in: 1..100, step: 0.1 %></div>
 
     <div><%= f.file_field :foto %></div>
-    <div><%= f.file_field :fotodocumentacion%> </div>
 
     <%= f.hidden_field :location_point_x %>
     <%= f.hidden_field :location_point_y %>

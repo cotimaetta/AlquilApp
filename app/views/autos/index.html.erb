@@ -1,35 +1,7 @@
 
 <html>
 <body>
-        <%if current_user.supervisor? %>
-            <table>
-                <tr>
-                    <th> Marca </th>
-                    <th> Modelo </th>
-                    <th> Descripción </th>
-                    <th> Estado </th>
-                    <th> Alquilado </th>
-                </tr>
-                <% @autos.each do |a| %>
-                    <tr>
-                        <td> <%= link_to a.marca, a %> </td>
-                        <td> <%= a.modelo %> </td>
-                        <td> <%= a.descripcion %> </td>
-                        <% if a.en_servicio %> 
-                            <td> En servicio </td>
-                        <% else %> 
-                            <td> Fuera de servicio </td>
-                        <% end %> 
-                        <%if a.alquilado%>
-                            <td> Alquilado </td>
-                        <%else%>
-                            <td> No alquilado </td>
-                        <%end%>
-                    </tr>
-                <%end%>
-            </table>
-        <%end%>
-
+    
         <% if current_user.admin? %>
             <%= link_to "Agregar auto", new_auto_path%>
             <table>
@@ -64,7 +36,7 @@
                 </tr>       
                 
                 <% @autos.each do |a| %>
-                    <% if a.alquilado==false && a.en_servicio == false   %>
+                    <% if !a.alquilado? && a.en_servicio == nil  %>
                         <tr>
                             <% @cantidad = @cantidad + 1 %>
                             <td><%= a.marca %></td>
