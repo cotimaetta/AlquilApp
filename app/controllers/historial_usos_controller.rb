@@ -2,7 +2,8 @@ class HistorialUsosController < ApplicationController
   before_action :set_historial_uso, only: %i[ show edit update destroy ]
 
   def agregarHoras
-    @historial = HistorialUso.last
+    @historial_uso = HistorialUso.where(user_id: params[:id_user],fechaFinal: nil).last
+    redirect_to edit_historial_uso_path(@historial)
   end
 
   # GET /historial_usos or /historial_usos.json
@@ -23,7 +24,6 @@ class HistorialUsosController < ApplicationController
 
   # GET /historial_usos/1/edit
   def edit
-    @historial_uso = HistorialUso.where(user_id: params[:id_user],fechaFinal: nil)
   end
 
   # POST /historial_usos or /historial_usos.json
