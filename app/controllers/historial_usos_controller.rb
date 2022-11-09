@@ -1,5 +1,5 @@
 class HistorialUsosController < ApplicationController
-  before_action :set_historial_uso, only: %i[ show edit update destroy agregarHoras]
+  before_action :set_historial_uso, only: %i[ show edit update destroy ]
 
   def agregarHoras
     @historial = HistorialUso.last
