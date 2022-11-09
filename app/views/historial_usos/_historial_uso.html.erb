@@ -1,32 +1,52 @@
 <div id="<%= dom_id historial_uso %>">
-  <p>
-    <strong>Monto:</strong>
-    <%= historial_uso.monto %>
+
+<p>
+  <strong>Nombre y Apellido: </strong>
+  <%= historial_uso.user.nombre %> <%= historial_uso.user.apellido %> 
   </p>
 
   <p>
-    <strong>Fechainicio:</strong>
-    <%= historial_uso.fechaInicio %>
+    <strong>Vehiculo: </strong>
+    <%= historial_uso.auto.marca %> <%= historial_uso.auto.modelo %> <%= historial_uso.auto.patente %> </p>
   </p>
 
   <p>
-    <strong>Fechafinal:</strong>
-    <%= historial_uso.fechaFinal %>
+    <strong>Fecha de entrega: </strong>
+    <%= historial_uso.fechaInicio.day%>/<%= historial_uso.fechaInicio.month%>/<%= historial_uso.fechaInicio.year%>   -   
+    <%= historial_uso.fechaInicio.hour%>:<%= historial_uso.fechaInicio.min%> hs.
   </p>
 
   <p>
-    <strong>Canthoras:</strong>
+    <strong>Fecha de devolucion: </strong>
+    <%= historial_uso.fechaFinal.day%>/<%= historial_uso.fechaFinal.month%>/<%= historial_uso.fechaFinal.year%>   -   
+    <%= historial_uso.fechaFinal.hour%>:<%= historial_uso.fechaFinal.min%> hs.
+  </p>
+
+  <p>
+    <strong>Cantidad de horas alquiler:</strong>
     <%= historial_uso.cantHoras %>
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= historial_uso.user_id %>
+  <strong>Cantidad horas extras:</strong>
+    0
   </p>
 
   <p>
-    <strong>Auto:</strong>
-    <%= historial_uso.auto_id %>
+  <strong>Monto:</strong>
+  <%= historial_uso.monto %>
   </p>
+
+  <p>
+  <strong>Monto horas extra:</strong>
+  0
+  </p>
+
+  <p>
+  <strong>Multas:</strong>
+  0
+  </p>
+  
+
 
 </div>
