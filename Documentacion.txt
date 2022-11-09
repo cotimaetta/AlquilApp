@@ -42,3 +42,7 @@ Tipo usuario -- rol
 -----------------------------------------------------------------------
 
 <%= image_submit_tag('Logo_1.png')%>
+
+
+INDEX HOME
+<%= link_to "horas extra", edit_historial_uso_path(current_user.id) %>
