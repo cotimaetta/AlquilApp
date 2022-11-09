@@ -17,13 +17,20 @@
     <% if @auto.foto.attached? %>
         <%= image_tag @auto.foto%>
     <% end %>
+    <% if @auto.fotodocumentacion.attached? %>
+        <%= image_tag @auto.fotodocumentacion%>
+    <% end %>
+
 </div>
 
-<% if current_user.saldo < 1000 %>
-  <h1> Usted no posee saldo suficiente para alquilar este auto </h1>
-  <%= link_to "agregar saldo" %>
-<% else %>
-  <%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id) , method: "Alquilar" %>
+
+<% if current_user.usuario? %>
+  <% if current_user.saldo < 1000  %>
+    <h1> Usted no posee saldo suficiente para alquilar este auto </h1>
+    <%= link_to "agregar saldo" %>
+  <% else %>
+    <%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id) , method: "Alquilar" %>
+  <%end%>
 <%end%>
 
 

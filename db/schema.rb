@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_08_002937) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_09_010510) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,10 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_08_002937) do
     t.float "cant_combustible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "location_point_y"
     t.string "location_point_x"
-    t.boolean "alquilado"
-    t.boolean "en_servicio"
+    t.string "location_point_y"
+    t.boolean "alquilado", default: false
+    t.boolean "en_servicio", default: false
   end
 
   create_table "fotousers", force: :cascade do |t|
