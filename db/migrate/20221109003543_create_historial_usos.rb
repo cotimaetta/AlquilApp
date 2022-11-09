@@ -5,7 +5,7 @@ class CreateHistorialUsos < ActiveRecord::Migration[7.0]
       t.datetime :fechaInicio
       t.datetime :fechaFinal
       t.integer :cantHoras
-      t.integer :cantHoras
+      t.integer :horasExtra
       
       t.references :user, null: false, foreign_key: true
       t.references :auto, null: false, foreign_key: true
