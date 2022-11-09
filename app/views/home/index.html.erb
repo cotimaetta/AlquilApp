@@ -7,7 +7,6 @@
     <title>Bienvenida</title>
 </head>
 <body>
-<%= link_to "horas extra", edit_historial_uso_path(current_user.id) %>
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>

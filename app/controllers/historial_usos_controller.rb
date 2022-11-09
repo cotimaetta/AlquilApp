@@ -22,7 +22,6 @@ class HistorialUsosController < ApplicationController
 
   # GET /historial_usos/1/edit
   def edit
-    @historial_uso = HistorialUso.where(user_id: params[:id_user],fechaFinal: nil)
   end
 
   # POST /historial_usos or /historial_usos.json
