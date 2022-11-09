@@ -47,6 +47,7 @@ class AutosController < ApplicationController
   
   def index
     @autos = Auto.all
+    @auto = Auto.last
   end
 
   def show
