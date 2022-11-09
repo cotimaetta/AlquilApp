@@ -1,0 +1,6 @@
+ <% if @auto.fotodocumentacion.attached? %>
+        <%= image_tag @auto.fotodocumentacion%>
+<%else %>
+    La documentacion de este auto no se encuentra disponible en este momento. <br>
+    Por favor comunicarse con un supervisor. 
+<% end %>

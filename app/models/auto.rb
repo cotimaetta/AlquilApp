@@ -4,6 +4,6 @@ class Auto < ApplicationRecord
     has_many :historialusos
     
 
-    validates :patente, :marca, :modelo, :cant_puertas, :cant_combustible, :foto, :fotodocumentacion,  presence:true
+    validates :patente, :marca, :modelo, :cant_puertas, :cant_combustible,   presence:true
     
 end

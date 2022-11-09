@@ -64,7 +64,7 @@
                 </tr>       
                 
                 <% @autos.each do |a| %>
-                    <% if !a.alquilado? && a.en_servicio == nil  %>
+                    <% if a.alquilado==false && a.en_servicio == false   %>
                         <tr>
                             <% @cantidad = @cantidad + 1 %>
                             <td><%= a.marca %></td>

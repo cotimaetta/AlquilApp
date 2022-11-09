@@ -10,7 +10,7 @@ class AutosController < ApplicationController
   def dejar
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: false)
-    @historial = @auto.historialusos.last.update!(fecha_fin: DateTime.now)
+    @historial = @auto.historialusos.last.update(fecha_fin: DateTime.now)
 
   end
   
@@ -28,6 +28,9 @@ class AutosController < ApplicationController
 
   end 
 
+  def mostrardocumentacion
+    @auto = Auto.find(params[:id])
+  end 
   
   def index
     @autos = Auto.all
@@ -45,10 +48,12 @@ class AutosController < ApplicationController
       render :new, status: :see_other
     end
   end
+
+  
   private
 
   def auto_params
-    params.require(:auto).permit(:patente, :marca, :modelo, :descripcion, :cant_puertas, :cant_combustible, :location_point_x, :location_point_y, :foto, :fotodocumentacion)
+    params.require(:auto).permit(:patente, :modelo, :marca, :descripcion, :cant_puertas, :cant_combustible, :location_point_x, :location_point_y, :foto, :fotodocumentacion)
   end
 
 end
