@@ -18,16 +18,18 @@
 
     <% if user_signed_in? %>
         <% if current_user.usuario? %>
-            <div class="boton"><%= link_to "horas extra", historial_usos_agregarHoras_path() %></div>
-            <div class="boton">  <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %> </div>
-            <div class="boton">    <%= render 'pos', auto: @auto %> </div>
-            <%if @auto.desbloqueado ==false %>
+            <% if @auto.desbloqueado == false %>
                 <div class="boton"><%= link_to "Desbloquear auto" , autos_desbloquear_path(:id => @auto.id) %></div>
-            <%else%>
-               <div class ="boton" > <h5>  Auto desbloqueado </h5> </div>
-            <%end%>
-        <% end %>
+            <%else %>
+                <div class ="boton" > <h5>  Auto desbloqueado </h5> </div>
+                <div class="boton"><%= link_to "horas extra", historial_usos_agregarHoras_path() %></div>
+                <div class="boton">  <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %> </div>
+                <div class="boton">    <%= render 'pos', auto: @auto %> </div>
+            
+            <% end %>
+        <%end%>
 
+        
     <% else %>
         <h1>AlquilApp </h1>
     <% end %>
