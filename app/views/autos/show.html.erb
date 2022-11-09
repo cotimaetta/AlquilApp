@@ -8,13 +8,13 @@
 
 
 <%= link_to 'Volver' , autos_path %>
-<h1> <%= @auto.marca%> </h1>
-<p> <%= @auto.descripcion %>
-<p><%=@auto.patente%></p>
+<h1><%= @auto.marca%> <%=@auto.patente%></h1>
+<p> Descripcion: <%= @auto.descripcion %>
 
-<p><%=@auto.location_point_x%></p>
-<p><%=@auto.location_point_y%></p>
-<p> <%=@auto.cant_puertas %> </p>
+<p><%@auto.location_point_x%></p>
+<p><%@auto.location_point_y%></p>
+<p> Cantidad puertas: <%=@auto.cant_puertas %> </p>
+<p> Cantidad combustible: <%=@auto.cant_combustible%> </p>
 
 <div>
     <% if @auto.foto.attached? %>
