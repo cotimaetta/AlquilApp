@@ -48,10 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_003543) do
     t.float "cant_combustible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "location_point_y"
     t.string "location_point_x"
-    t.boolean "alquilado"
-    t.boolean "en_servicio"
+    t.string "location_point_y"
+    t.boolean "alquilado", default: false
+    t.boolean "en_servicio", default: false
   end
 
   create_table "fotousers", force: :cascade do |t|
