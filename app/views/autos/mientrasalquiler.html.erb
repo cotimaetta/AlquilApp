@@ -22,9 +22,9 @@
             <div class="boton">  <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %> </div>
             <div class="boton">    <%= render 'pos', auto: @auto %> </div>
             <%if @auto.desbloqueado ==false %>
-                <%= link_to "Desbloquear auto" , autos_desbloquear_path(:id => @auto.id) %>
+                <div class="boton"><%= link_to "Desbloquear auto" , autos_desbloquear_path(:id => @auto.id) %></div>
             <%else%>
-                <h5>  auto desbloqueado </h5>
+               <div class ="boton" > <h5>  Auto desbloqueado </h5> </div>
             <%end%>
         <% end %>
 
