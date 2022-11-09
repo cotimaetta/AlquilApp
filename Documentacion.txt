@@ -40,5 +40,5 @@ Tipo usuario -- rol
               2 user
 
 -----------------------------------------------------------------------
-Estoy probando vscode
-Hola soy calvo esto es facil
+
+<%= image_submit_tag('Logo_1.png')%>

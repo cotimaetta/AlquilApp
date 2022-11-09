@@ -7,18 +7,25 @@ class AutosController < ApplicationController
     @cantidad = 0 
   end
 
+  def mientrasalquiler
+    @auto = Auto.find(params[:id])
+  end
+
   def dejar
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: false)
     HistorialUso.last.update(fechaFinal: DateTime.now)
-    redirect_to root_path
 
   end
   
+  #SE ACTUALIZA CON EL SUBMIT - OJO!!!!!!!!!!!!!
   def update
     @auto = Auto.find(params[:id])
     @auto.update!(auto_params)
-    redirect_to root_path
+    @auto.update(alquilado: false)
+    @historial = HistorialUso.last
+    HistorialUso.last.update(fechaFinal: DateTime.now)
+    redirect_to historial_uso_path(:id => @historial.id)
  end
 
  def alquilar 
