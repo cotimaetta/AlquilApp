@@ -15,7 +15,7 @@
 
   <div>
     <%= form.label :cantHoras, style: "display: block" %>
-    <%= form.number_field :cantHoras %>
+    <%= form.number_field :cantHoras, in:1..24 %>
   </div>
 
   <div>

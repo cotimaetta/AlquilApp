@@ -33,6 +33,9 @@ class HistorialUsosController < ApplicationController
       @historial_uso = HistorialUso.new(historial_uso_params)
       @historial_uso.fechaInicio = DateTime.now
       @historial_uso.monto = @historial_uso.cantHoras * 1000
+      
+      @user.saldo = @user.saldo - @historial_uso.monto
+      @user.save
 
       respond_to do |format|
         if @historial_uso.save
@@ -53,16 +56,27 @@ class HistorialUsosController < ApplicationController
 
   # PATCH/PUT /historial_usos/1 or /historial_usos/1.json
   def update
-    respond_to do |format|
-      if @historial_uso.update(historial_uso_params)
-        #format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully updated." }
-        format.html { redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id) }
-        format.json { render :show, status: :ok, location: @historial_uso }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @historial_uso.errors, status: :unprocessable_entity }
+    @user = User.find(@historial_uso.user_id)
+    if(@user.saldo >= (Float(historial_uso_params[:horasExtra]) * 1500))
+      @historial_uso.monto = @historial_uso.monto + (Float(historial_uso_params[:horasExtra]) * 1500)
+      
+      @user.saldo = @user.saldo - (Float(historial_uso_params[:horasExtra]) * 1500)
+      @user.save
+
+      respond_to do |format|
+        if @historial_uso.update(historial_uso_params)
+          #format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully updated." }
+          format.html { redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id) }
+          format.json { render :show, status: :ok, location: @historial_uso }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @historial_uso.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id), alert: "No tenes saldo suficiente,para extender horas"
     end
+
   end
 
   # DELETE /historial_usos/1 or /historial_usos/1.json

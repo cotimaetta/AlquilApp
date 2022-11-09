@@ -1,3 +1,4 @@
+<% horas = 24 - historial_uso.cantHoras%>
 <%= form_with(model: historial_uso) do |form| %>
   <% if historial_uso.errors.any? %>
     <div style="color: red">
@@ -13,7 +14,7 @@
 
   <div>
     <%= form.label :horasExtra, style: "display: block" %>
-    <%= form.number_field :horasExtra %>
+    <%= form.number_field :horasExtra, in:1..horas %>
   </div>
 
   <div>
