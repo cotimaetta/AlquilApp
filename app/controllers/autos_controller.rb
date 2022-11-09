@@ -35,6 +35,11 @@ class AutosController < ApplicationController
     redirect_to new_historial_uso_path(:id_auto => @auto.id)
 
   end 
+  def desbloquear 
+    @auto = Auto.find(params[:id])
+    @auto.update(desbloqueado: true)
+    redirect_to autos_mientrasalquiler_path(:id => @auto.id), alert: "auto desbloqueado" 
+  end 
 
   def mostrardocumentacion
     @auto = Auto.find(params[:id])

@@ -3,3 +3,10 @@
 <%= link_to "horas extra", historial_usos_agregarHoras_path() %>
 <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %>
 <%= render 'pos', auto: @auto %>
+
+
+<%if @auto.desbloqueado ==false %>
+    <%= link_to "Desbloquear auto" , autos_desbloquear_path(:id => @auto.id) %>
+<%else%>
+    <h5>  auto desbloqueado </h5>
+<%end%>
