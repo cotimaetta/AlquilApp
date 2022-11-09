@@ -7,7 +7,7 @@
     <title>Bienvenida</title>
 </head>
 <body>
-
+<%= link_to "horas extra", edit_historial_uso_path(current_user.id) %>
     <% if user_signed_in? %>
         <h1>Bienvenido <%= current_user.email %> </h1>
         <h1><%= current_user.nombre%> </h1>
@@ -15,10 +15,11 @@
         <% if current_user.admin? %>
             <%= link_to "Autos", autos_path%>
         <%end%>
+        <% @h = Historialuso.last %>
+        <%= link_to "Comprobante", historialusos_show_path(@h.id) %>
 
         <% if current_user.supervisor? %>
             <%= link_to "Validar usuario", supervisors_path%>
-            <%= link_to "Autos", autos_path%>
         <%end%>
 
         <% if current_user.usuario? %>

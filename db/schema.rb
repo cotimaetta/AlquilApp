@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_010510) do
     t.datetime "fechaInicio"
     t.datetime "fechaFinal"
     t.integer "cantHoras"
+    t.integer "horasExtra"
     t.integer "user_id", null: false
     t.integer "auto_id", null: false
     t.datetime "created_at", null: false
