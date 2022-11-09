@@ -1,9 +1,13 @@
 <h1>New historial uso</h1>
 <%@historial_uso.auto_id = @auto_id%>
-<%= render "form", historial_uso: @historial_uso %>
 
-<br>
+<% if current_user.usuario?%>
+  <%= render "form", historial_uso: @historial_uso %>
+<%end%>
+<% if current_user.admin?%>
+  <div>
+    <%= link_to "Back to historial usos", historial_usos_path %>
+  </div>
+<%end%>
 
-<div>
-  <%= link_to "Back to historial usos", historial_usos_path %>
-</div>
+

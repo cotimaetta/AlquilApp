@@ -30,7 +30,8 @@ class HistorialUsosController < ApplicationController
 
       respond_to do |format|
         if @historial_uso.save
-          format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully created." }
+          #format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully created." }
+          format.html { redirect_to autos_dejar_path(:id => @historial_uso.auto_id), notice: "Historial uso was successfully created." }
           format.json { render :show, status: :created, location: @historial_uso }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +47,8 @@ class HistorialUsosController < ApplicationController
   def update
     respond_to do |format|
       if @historial_uso.update(historial_uso_params)
-        format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully updated." }
+        #format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully updated." }
+        format.html { redirect_to autos_dejar_path(:id => @historial_uso.auto_id), notice: "Historial uso was successfully created." }
         format.json { render :show, status: :ok, location: @historial_uso }
       else
         format.html { render :edit, status: :unprocessable_entity }

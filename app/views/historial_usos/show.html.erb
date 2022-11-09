@@ -3,9 +3,11 @@
 <%= render @historial_uso %>
 
 <%if current_user.admin? %>
-<div>
-  <%= link_to "Edit this historial uso", edit_historial_uso_path(@historial_uso) %> |
-  <%= link_to "Back to historial usos", historial_usos_path %>
-  <%= button_to "Destroy this historial uso", @historial_uso, method: :delete %>
-</div>
+  <div>
+    <%= link_to "Edit this historial uso", edit_historial_uso_path(@historial_uso) %> |
+    <%= link_to "Back to historial usos", historial_usos_path %>
+
+    #NOS LLEVA A EL HISTORIAL DE USO
+    #<%= button_to "Destroy this historial uso", @historial_uso, method: :delete %>
+  </div>
 <%end%>

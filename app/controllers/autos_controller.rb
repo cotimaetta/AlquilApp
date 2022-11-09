@@ -10,12 +10,13 @@ class AutosController < ApplicationController
   def dejar
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: false)
-    @historial = @auto.historialusos.last.update(fecha_fin: DateTime.now)
+    HistorialUso.last.update(fechaFinal: DateTime.now)
+    redirect_to root_path
 
   end
   
   def update
-    @auto = Auto.find params[:id]
+    @auto = Auto.find(params[:id])
     @auto.update!(auto_params)
     redirect_to root_path
  end
