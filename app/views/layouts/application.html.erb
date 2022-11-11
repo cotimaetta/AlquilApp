@@ -48,7 +48,7 @@
   text-align: center;
   line-height: 50px;
   border-radius: 30%;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   /*color: #fff;*/
   /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
@@ -113,7 +113,7 @@
   font-size: 20px;
   font-weight: 400;
   padding: 5px 30px;
-  color: #fff;
+  color: black; 
   border-radius: 30px;
   position: absolute;
   line-height: 50px;
@@ -191,14 +191,14 @@ input[type="checkbox"]{
     <ul>
       
       <% if user_signed_in? %>
-          <li><a> <%= link_to "Home" , root_path %></a></li>
+          <li><strong> <%= link_to "Home" , root_path %>  </a></li>
           <li>
           <a> <%= link_to "Salir", destroy_user_session_path, method: :delete %> </a> 
           </li>
       <% else %>
           <li><a> <%= link_to "Home" , root_path %></a></li>
           <br>
-          <li> <a> <%= link_to "Iniciar Sesion", new_user_session_path %> </a> </li>
+          <li> <a> <%= link_to "IniciarSesion", new_user_session_path %> </a> </li>
           <br>
           <li> <a> <%= link_to "Registrarme", new_user_registration_path %> </a>  </li>
        

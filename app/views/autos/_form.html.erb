@@ -30,8 +30,10 @@ navigator.geolocation.getCurrentPosition((pos) => {
     <div><%= f.label :"cantidad combustible" %><br />
     <%= f.number_field :cant_combustible, in: 1..100, step: 0.1 %></div>
 
-    <div><%= f.file_field :foto %></div>
-    <div><%= f.file_field :fotodocumentacion%> </div>
+    <div><%= f.label :"foto auto" %><br />
+    <%= f.file_field :foto %></div>
+    <div> <%= f.label :"foto del seguro " %><br />
+    <%= f.file_field :fotodocumentacion%> </div>
 
     <%= f.hidden_field :location_point_x %>
     <%= f.hidden_field :location_point_y %>
