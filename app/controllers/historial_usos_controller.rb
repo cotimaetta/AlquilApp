@@ -19,7 +19,7 @@ class HistorialUsosController < ApplicationController
   # GET /historial_usos/new
   def new
     @historial_uso = HistorialUso.new
-    @auto_id = params[:id_auto]
+    @auto_id = params[:id_auto] 
   end
 
   # GET /historial_usos/1/edit
