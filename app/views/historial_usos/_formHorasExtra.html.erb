@@ -1,4 +1,8 @@
 <% horas = 24 - historial_uso.cantHoras%>
+<% historial_uso.errors.each do |error| %>
+  <li><%= error.full_message %></li>
+<% end %>
+
 <%= form_with(model: historial_uso) do |form| %>
   <% if historial_uso.errors.any? %>
     <div style="color: red">

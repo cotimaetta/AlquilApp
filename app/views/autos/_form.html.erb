@@ -9,6 +9,9 @@ navigator.geolocation.getCurrentPosition((pos) => {
 });
 </script>
 
+<% auto.errors.each do |error| %>
+  <li><%= error.full_message %></li>
+<% end %>
 
 <%= form_with model: auto do |f| %> 
     
@@ -31,12 +34,11 @@ navigator.geolocation.getCurrentPosition((pos) => {
     <%= f.number_field :cant_combustible, in: 1..100, step: 0.1 %></div>
 
     <div><%= f.label :"foto auto" %><br />
-    <%= f.file_field :foto %></div>
+    <%= f.file_field :foto, accept: 'image/png,image/jpeg' %></div>
     <div> <%= f.label :"foto del seguro " %><br />
-    <%= f.file_field :fotodocumentacion%> </div>
+    <%= f.file_field :fotodocumentacion, accept: 'image/png,image/jpeg'%> </div>
 
     <%= f.hidden_field :location_point_x %>
     <%= f.hidden_field :location_point_y %>
-    
     <%= f.submit 'Guardar' %> 
 <% end %>
