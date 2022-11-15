@@ -14,6 +14,7 @@ class AutosController < ApplicationController
   def dejar
     @auto = Auto.find(params[:id])
     @auto.update(alquilado: false)
+    @auto.update(desbloqueado: false)
     HistorialUso.last.update(fechaFinal: DateTime.now)
 
   end
@@ -30,13 +31,24 @@ class AutosController < ApplicationController
 
  def alquilar 
     @auto = Auto.find(params[:id])
+    @user = User.find(params[:id_user])
     if @auto.alquilado == true
-      redirect_to root_path #, alert: "El auto fue alquilado por otra persona"
+      # el auto fue alquilado por otro
+      redirect_to autos_path, alert: "El auto fue alquilado por otra persona"
     else
-      @auto.update(alquilado: true)
-      redirect_to new_historial_uso_path(:id_auto => @auto.id)
+      if Date.today > @user.fecha_ven
+        #el carnet esta mal
+        redirect_to root_path, alert: "Tu carnet esta vencido"        
+      else
+        #todo bien
+        @auto.update(alquilado: true)
+        redirect_to new_historial_uso_path(:id_auto => @auto.id)
+      end
     end
   end 
+  
+  
+  
   def desbloquear 
     @auto = Auto.find(params[:id])
     @auto.update(desbloqueado: true)

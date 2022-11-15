@@ -3,7 +3,13 @@ class HistorialUsosController < ApplicationController
 
   def agregarHoras
     @historial_uso = HistorialUso.where(user_id: current_user.id,fechaFinal: nil).last
-    redirect_to edit_historial_uso_path(@historial_uso)
+    if  DateTime.now > @historial_uso.fechaInicio + cantHoras.hours
+      #no te pasaste
+      redirect_to edit_historial_uso_path(@historial_uso)
+    else
+      #ya te pasaste
+      redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id), alert: "Ya te pasaste de la cant de horas"
+    end
   end
 
   # GET /historial_usos or /historial_usos.json
@@ -50,7 +56,7 @@ class HistorialUsosController < ApplicationController
     else
       @auto = Auto.find(historial_uso_params[:auto_id])
       @auto.update(alquilado: false)
-      redirect_to root_path, alert: "No tenes saldo suficiente"
+      redirect_to new_historial_uso_path(:id_auto => @auto.id), alert: "No tenes saldo suficiente"
     end
   end
 

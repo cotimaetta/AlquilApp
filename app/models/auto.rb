@@ -18,9 +18,9 @@ class Auto < ApplicationRecord
                 end
             else  
                 if ((patente != nil) && (patente.length == 7)) 
-                    c = patente [0,2]
-                    d = patente [2, 3]
-                    e = patente [5, 2]
+                    c = patente [0, 1]
+                    d = patente [1, 4]
+                    e = patente [5, 6]
                     if ( !(c=~  /[a-zA-Z]/ ) && !(d =~ /[0-9]/ ) && !(e =~ /[a-zA-Z]/ ))
                         errors.add(:base ,message:"La patente no coincide con el formato")
                     end 

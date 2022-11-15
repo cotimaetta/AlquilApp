@@ -32,7 +32,7 @@
     <h1> Usted no posee saldo suficiente para alquilar este auto </h1>
     <%= link_to "agregar saldo" %>
   <% else %>
-    <%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id) , method: "Alquilar" %>
+    <%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id, :id_user => current_user.id ) , method: "Alquilar" %>
   <%end%>
 <%end%>
 
