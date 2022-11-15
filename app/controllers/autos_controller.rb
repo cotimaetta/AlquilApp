@@ -11,13 +11,12 @@ class AutosController < ApplicationController
     @auto = Auto.find(params[:id])
   end
 
-  def dejar
-    @auto = Auto.find(params[:id])
-    @auto.update(alquilado: false)
-    @auto.update(desbloqueado: false)
-    HistorialUso.last.update(fechaFinal: DateTime.now)
+  #def dejar
+   # @auto = Auto.find(params[:id])
+    #@auto.update(alquilado: false)
+    #HistorialUso.last.update(fechaFinal: DateTime.now)
 
-  end
+  #end
   
   #SE ACTUALIZA CON EL SUBMIT - OJO!!!!!!!!!!!!!
   def update

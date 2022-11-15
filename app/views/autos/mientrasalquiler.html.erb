@@ -18,6 +18,11 @@
 
     <% if user_signed_in? %>
         <% if current_user.usuario? %>
+            <% flash.each do |type, msg| %>
+                <div>
+                <%= msg %>
+                </div>
+            <% end %>
             <% if @auto.desbloqueado == false %>
                 <div class="boton"><%= link_to "Desbloquear auto" , autos_desbloquear_path(:id => @auto.id) %></div>
             <%else %>

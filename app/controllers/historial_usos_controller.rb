@@ -3,8 +3,8 @@ class HistorialUsosController < ApplicationController
 
   def agregarHoras
     @historial_uso = HistorialUso.where(user_id: current_user.id,fechaFinal: nil).last
-    if  DateTime.now > @historial_uso.fechaInicio + cantHoras.hours
-      #no te pasaste
+    if  @historial_uso.fechaInicio + @historial_uso.cantHoras.hours + @historial_uso.horasExtra.hours > DateTime.now
+      #no te pasaste TODO BIEN
       redirect_to edit_historial_uso_path(@historial_uso)
     else
       #ya te pasaste
@@ -65,7 +65,8 @@ class HistorialUsosController < ApplicationController
     @user = User.find(@historial_uso.user_id)
     if(@user.saldo >= (Float(historial_uso_params[:horasExtra]) * 1500))
       @historial_uso.monto = @historial_uso.monto + (Float(historial_uso_params[:horasExtra]) * 1500)
-      
+      @historial_uso.horasExtra = @historial_uso.horasExtra + Integer(historial_uso_params[:horasExtra])
+
       @user.saldo = @user.saldo - (Float(historial_uso_params[:horasExtra]) * 1500)
       @user.save
 
@@ -80,7 +81,9 @@ class HistorialUsosController < ApplicationController
         end
       end
     else
-      redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id), alert: "No tenes saldo suficiente,para extender horas"
+      redirect_to historial_usos_agregarHoras_path(), alert: "No tenes saldo suficiente,para extender horas"
+      #no se porque era aca
+      #redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id), alert: "No tenes saldo suficiente,para extender horas"
     end
 
   end
