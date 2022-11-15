@@ -30,10 +30,12 @@ class AutosController < ApplicationController
 
  def alquilar 
     @auto = Auto.find(params[:id])
-    @auto.update(alquilado: true)
-
-    redirect_to new_historial_uso_path(:id_auto => @auto.id)
-
+    if @auto.alquilado == true
+      redirect_to root_path #, alert: "El auto fue alquilado por otra persona"
+    else
+      @auto.update(alquilado: true)
+      redirect_to new_historial_uso_path(:id_auto => @auto.id)
+    end
   end 
   def desbloquear 
     @auto = Auto.find(params[:id])
