@@ -18,6 +18,7 @@
 
         <% if current_user.supervisor? %>
             <%= link_to "Validar usuario", supervisors_path%>
+            <%= link_to "Autos", autos_path%>
         <%end%>
 
         <% if current_user.usuario? %>
