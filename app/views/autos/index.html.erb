@@ -122,8 +122,9 @@
 
         <% if current_user.usuario? %>
             <div id="map" style="height: 400px"></div>
-            <h5> AUTOS DISPONIBLES PARA ALQUILAR </h5> 
             <div class="boton"><%= link_to 'Volver' , root_path, class: "btn btn-light"  %></div> 
+            <h5> AUTOS DISPONIBLES PARA ALQUILAR </h5> 
+            
             <% if  @cant != 0 %>
             <table class="content">
                 <tr>

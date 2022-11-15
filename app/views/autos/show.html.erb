@@ -1,50 +1,140 @@
-<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
-<script>
-  mapboxgl.accessToken = "pk.eyJ1IjoibWF0aWFzY2Fsdm8iLCJhIjoiY2xhN2dicDdyMDJmbTN1bGltNzgxemVnNiJ9.q53AjhcWdf-mN5luAw0TDg";
-</script>
-<script src="https://unpkg.com/mapkick@0.1.1/dist/mapkick.js"></script>
-
-
-
-<%= link_to 'Volver' , autos_path %>
-<h1><%= @auto.marca%> <%=@auto.patente%></h1>
-<p> Descripcion: <%= @auto.descripcion %>
-
-<p><%@auto.location_point_x%></p>
-<p><%@auto.location_point_y%></p>
-<p> Cantidad puertas: <%=@auto.cant_puertas %> </p>
-<p> Cantidad combustible: <%=@auto.cant_combustible%> </p>
-
-<div>
-    <% if @auto.foto.attached? %>
-        <%= image_tag @auto.foto%>
-    <% end %>
-    <% if @auto.fotodocumentacion.attached? %>
-        <%= image_tag @auto.fotodocumentacion%>
-    <% end %>
-
-</div>
-
-
-<% if current_user.usuario? %>
-  <% if current_user.saldo < 1000  %>
-    <h1> Usted no posee saldo suficiente para alquilar este auto </h1>
-    <%= link_to "agregar saldo" %>
-  <% else %>
-    <%= link_to "alquilar auto" , autos_alquilar_path(:id => @auto.id, :id_user => current_user.id ) , method: "Alquilar" %>
-  <%end%>
-<%end%>
-
-
-<div id="map" style="height: 400px"></div>
-	 
-<script>
-  new Mapkick.Map("map", [
-    {
-      latitude: <%= @auto.location_point_x %>,
-      longitude: <%= @auto.location_point_y %>,
-      tooltip: '<%= @auto.modelo %>'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+ 
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js"></script>
+    <script>
+      mapboxgl.accessToken = "pk.eyJ1IjoibWF0aWFzY2Fsdm8iLCJhIjoiY2xhN2dicDdyMDJmbTN1bGltNzgxemVnNiJ9.q53AjhcWdf-mN5luAw0TDg";
+    </script>
+    <script src="https://unpkg.com/mapkick@0.1.1/dist/mapkick.js"></script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;700&family=Raleway:wght@100&family=Roboto:wght@100&family=Ubuntu:wght@300;400;500;700&display=swap');
+    
+    *{
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
     }
-  ]);
-</script>
+
+    .boton{
+        position: fixed;
+        right: 15px;
+        padding: 15px;
+        z-index: 10;
+    }
+    .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 25px;
+    }
+    .parent {
+      display: flex;
+      flex-wrap: wrap;
+      padding:20px;
+    }
+    .child {
+      flex: 0 1 300px;
+      flex: 1 1 300px;
+      text-align: center;
+    }
+    
+</style>
+<body>
+
+
+<% if user_signed_in? %>
+
+      <div id="map" style="height: 400px"></div>
+
+      <div class="boton"><%= link_to 'Volver' , autos_path, class: "btn btn-light"  %></div> 
+
+      <% if current_user.usuario? %>
+        <% if current_user.saldo < 1000  %>
+          <h1> Usted no posee saldo suficiente para alquilar este auto </h1>
+          <%= link_to "agregar saldo" %>
+        <% else %>
+          <div class="content"><%=link_to "ALQUILAR" , autos_alquilar_path(:id => @auto.id, :id_user => current_user.id ) , method: "Alquilar", class: "btn btn-light"  %> </div>
+        <%end%>
+      <%end%>
+      
+      <div class="parent">
+        <div class="child">
+          <h1><%= @auto.marca%> <%= @auto.modelo%></h1>
+          
+          <p>
+            <strong>Patente: </strong> <%=@auto.patente%>
+          </p>
+          <p>
+            <strong>Descripcion: </strong> <%=@auto.descripcion%>
+          </p>
+          <p>
+            <strong>Cantidad de puertas: </strong> <%=@auto.cant_puertas%>
+          </p>
+          <p>
+            <strong>Cantidad de combustible: </strong> <%=@auto.cant_combustible%>
+          </p>
+
+          <% if !current_user.usuario? %>
+            <p>
+              <strong>Estado: </strong>
+              <% if @auto.en_servicio %> 
+                  En servicio
+                <% else %> 
+                  Fuera de servicio
+                <% end %>
+            </p>
+            <p> 
+                <%if @auto.alquilado%>
+                    <td> Alquilado </td>
+                <%else%>
+                    <td> No alquilado </td>
+                <%end%>
+            </p>
+          <% end %>
+
+          <p><%@auto.location_point_x%></p>
+          <p><%@auto.location_point_y%></p>
+        </div>
+
+        <div class="child">
+              <% if @auto.foto.attached? %>
+                  <div class="content"> <%= image_tag @auto.foto%></div>
+              <% end %>
+        </div>
+        
+        <% if !current_user.usuario? %>
+        <div class="child">
+            <div class="content"><%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id), class: "btn btn-light"  %></div>
+        </div>
+        <% end %>
+        
+      </div>
+
+
+      
+        
+      <script>
+        new Mapkick.Map("map", [
+          {
+            latitude: <%= @auto.location_point_x %>,
+            longitude: <%= @auto.location_point_y %>,
+            tooltip: '<%= @auto.modelo %>'
+          }
+        ]);
+      </script>
+
+<% end %>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</body>
+</html>
