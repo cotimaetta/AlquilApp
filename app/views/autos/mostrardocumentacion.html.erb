@@ -1,6 +1,31 @@
- <% if @auto.fotodocumentacion.attached? %>
-        <%= image_tag @auto.fotodocumentacion%>
-<%else %>
-    La documentacion de este auto no se encuentra disponible en este momento. <br>
-    Por favor comunicarse con un supervisor. 
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentacion</title>
+</head>
+<style>
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 25px;
+    }
+</style>
+<body>
+    <% if user_signed_in? %>
+        <div class="content">
+            <% if @auto.fotodocumentacion.attached? %>
+                    <%= image_tag @auto.fotodocumentacion%>
+            <%else %>
+                La documentacion de este auto no se encuentra disponible en este momento. <br>
+                Por favor comunicarse con un supervisor. 
+            <% end %>
+        </div>
+    <% end %>
+</body>
+</html>
