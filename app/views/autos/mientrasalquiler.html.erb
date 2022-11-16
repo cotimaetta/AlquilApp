@@ -28,8 +28,8 @@
             <%else %>
                 <div class ="boton" > <h5>  Auto desbloqueado </h5> </div>
                 <div class="boton"><%= link_to "horas extra", historial_usos_agregarHoras_path() %></div>
-                <div class="boton">  <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %> </div>
-                <div class="boton">    <%= render 'dejar', auto: @auto %> </div>
+                <div class="boton"> <%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id)  %> </div>
+                <div class="boton"> <%= link_to "DEJAR" , autos_dejar_path()%> </div>#:id_auto => @auto.id
             
             <% end %>
         <%end%>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'autos/dejar'
   get 'autos/alquilar'
+  get 'autos/verificarDejar'
+  patch'autos/verificarDejar'
   get 'autos/mostrardocumentacion'
   get 'autos/mientrasalquiler'
   get 'autos/desbloquear'
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :supervisors, only:[:create, :index, :new, :show, :validar]
   resources :fotousers, only:[:create, :index, :new, :show]
-  resources :autos, only:[:create, :index, :new, :show, :alquilar, :dejar, :update, :mostrardocumentacion, :mientrasalquiler, :desbloquear]
+  resources :autos, only:[:create, :index, :new, :show, :alquilar, :verificarDejar, :dejar, :update, :mostrardocumentacion, :mientrasalquiler, :desbloquear]
   devise_for :users, :controllers => { registrations: 'registrations'}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -29,9 +31,10 @@ Rails.application.routes.draw do
 
   #get "/bienvenida", to: "home#index"
 
+  patch "autos/verificarDejar"     => "autos#verificarDejar"
+  get "autos/verificarDejar"     => "autos#verificarDejar"
 
-
-  get "autos/new"         => "autos#new"
+  get "autos/new"           => "autos#new"
   get "autos/index"         => "autos#index"
 
   get "fotousers/new"         => "fotousers#new"

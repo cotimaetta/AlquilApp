@@ -11,21 +11,25 @@ class AutosController < ApplicationController
     @auto = Auto.find(params[:id])
   end
 
-  #def dejar
-   # @auto = Auto.find(params[:id])
-    #@auto.update(alquilado: false)
-    #HistorialUso.last.update(fechaFinal: DateTime.now)
+  def dejar
+    @auto = Auto.last#find(params[:id_auto])
+    @auto.descripcion = "modificado desde el controler dejar"
+    @auto.save
+  end
 
-  #end
+  def verificarDejar
+    @auto = Auto.find(params[:auto][:id])
+    @auto.alquilado = false
+    @auto.save
+    @historial = HistorialUso.where(auto_id: @auto.id).last
+    HistorialUso.last.update(fechaFinal: DateTime.now)
+    redirect_to historial_uso_path(:id => @historial.id)
+  end
   
   #SE ACTUALIZA CON EL SUBMIT - OJO!!!!!!!!!!!!!
   def update
     @auto = Auto.find(params[:id])
-    @auto.update!(auto_params)
-    @auto.update(alquilado: false)
-    @historial = HistorialUso.last
-    HistorialUso.last.update(fechaFinal: DateTime.now)
-    redirect_to historial_uso_path(:id => @historial.id)
+    @auto.update(auto_params)
  end
 
  def alquilar 

@@ -9,16 +9,11 @@ navigator.geolocation.getCurrentPosition((pos) => {
 });
 </script>
 
-<%descripcion = "lo estoy modificando"%>
-
-<p>Soy el otro</p>
-
-<%= form_with model: auto do |f| %> 
-  
+<%= form_with(model: auto, url: autos_verificarDejar_path(auto)) do |f| %> 
+   
   <%= f.hidden_field :location_point_x %>
   <%= f.hidden_field :location_point_y %>
-
-  <%= f.hidden_field :descripcion %>
+  <%= f.hidden_field :id %>
 
   <%= f.submit 'dejar el auto' %> 
 <% end %>
