@@ -13,6 +13,7 @@ class AutosController < ApplicationController
 
   def dejar
     @auto = Auto.find(params[:id_auto])
+    @historial = HistorialUso.where(auto_id: @auto.id).last
   end
 
   def verificarDejar
