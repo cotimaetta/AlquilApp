@@ -1,6 +1,9 @@
 <h1>Usted esta apunto de dejar el auto</h1>
 <p>Al dejarlo el auto se va a bloquear</p>
 <p>coming soon reportes antes de dejarlo</p>
-
+<%sePaso = ! (@historial.fechaInicio + @historial.cantHoras.hours + @historial.horasExtra.hours > DateTime.now)%>
+<%if sePaso%>
+    <p>tien una multa porque te pasaste de la hora</p>
+<%end%>
 
 <div class="boton">    <%= render 'dejar', auto: @auto %> </div>
