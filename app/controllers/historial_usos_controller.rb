@@ -39,6 +39,8 @@ class HistorialUsosController < ApplicationController
       @historial_uso = HistorialUso.new(historial_uso_params)
       @historial_uso.fechaInicio = DateTime.now
       @historial_uso.monto = @historial_uso.cantHoras * 1000
+
+      @historial_uso.horasExtra = 0 #no se si es aca o en la base de datos
       
       @user.saldo = @user.saldo - @historial_uso.monto
       @user.save
@@ -64,14 +66,15 @@ class HistorialUsosController < ApplicationController
   def update
     @user = User.find(@historial_uso.user_id)
     if(@user.saldo >= (Float(historial_uso_params[:horasExtra]) * 1500))
+      #@historial_uso.update(historial_uso_params)
       @historial_uso.monto = @historial_uso.monto + (Float(historial_uso_params[:horasExtra]) * 1500)
-      @historial_uso.horasExtra = @historial_uso.horasExtra + Integer(historial_uso_params[:horasExtra])
+      @historial_uso.horasExtra = @historial_uso.horasExtra + (Integer(historial_uso_params[:horasExtra]))
 
       @user.saldo = @user.saldo - (Float(historial_uso_params[:horasExtra]) * 1500)
       @user.save
 
       respond_to do |format|
-        if @historial_uso.update(historial_uso_params)
+        if @historial_uso.save
           #format.html { redirect_to historial_uso_url(@historial_uso), notice: "Historial uso was successfully updated." }
           format.html { redirect_to autos_mientrasalquiler_path(:id => @historial_uso.auto_id) }
           format.json { render :show, status: :ok, location: @historial_uso }

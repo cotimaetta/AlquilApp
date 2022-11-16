@@ -1,4 +1,4 @@
-<% horas = 24 - historial_uso.cantHoras%>
+<% horas = 24 - historial_uso.cantHoras - historial_uso.horasExtra%>
 <% historial_uso.errors.each do |error| %>
   <li><%= error.full_message %></li>
 <% end %>
@@ -18,7 +18,10 @@
 
   <div>
     <%= form.label :horasExtra, style: "display: block" %>
-    <%= form.number_field :horasExtra, in:1..horas %>
+    <%= form.number_field :horasExtra, in:1..horas%>
+  </div>
+  <div>
+    <span>Maximo horas extra: <%=horas%></span>
   </div>
 
   <div>
