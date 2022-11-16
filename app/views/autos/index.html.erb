@@ -138,7 +138,7 @@
                 </script>
 
                 <% @autos.each do |a| %>
-                    <% if a.alquilado==false && a.en_servicio == true   %>
+                    <% if a.alquilado==false && a.en_servicio == true && a.fueraDelCasco? %>
                             <script>pos.unshift({
                                 latitude: <%= a.location_point_x %>,
                                 longitude: <%= a.location_point_y %>,

@@ -18,14 +18,8 @@ class AutosController < ApplicationController
   def verificarDejar
     @auto = Auto.find(params[:auto][:id])
     @auto.update(auto_params)
-    polygon = Geokit::Polygon.new([ 
-      Geokit::LatLng.new(-34.920140999662024, -57.91551169140792), 
-      Geokit::LatLng.new(-34.953443552547334, -57.95262186845976), 
-      Geokit::LatLng.new(-34.92275203306298, -57.99405925723118), 
-      Geokit::LatLng.new(-34.88915210274202, -57.956846729265635)
-    ])    
-    point = Geokit::LatLng.new(Float(@auto.location_point_x),Float(@auto.location_point_y))
-    if(polygon.contains?(point))  
+    
+    if(@auto.fueraDelCasco?)  
       @auto.alquilado = false
       @auto.descripcion = @auto.location_point_y
       @auto.save
