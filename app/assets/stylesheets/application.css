@@ -21,14 +21,12 @@
     align-items: center;
     justify-content: center;
 }
-.input{
-    margin: 15px;
-}
 
 .input{
+    margin: 10px;
     width: 50%;
     /*padding --> como se ve el texto dentro del input*/
-    padding: 5px 10px;
+    padding: 5px 15px;
     /*Ancho del borde 2px*/
     border: 2px solid #ffa256;
     /*Redondea los bordes*/
@@ -39,13 +37,11 @@
 
 
 .input:focus{ /*Cuando estoy en el input*/
-
     outline: none;
 }
 
-.input:hover{
-    background-color: #ffa256;
-    color:white;
+.input:hover{   /*Cuando paso cursor por arriba*/
+    color: #ffa256;
     border: solid 2px #ffa256;
     box-shadow: 0 0 6px #ffa256;
 }
