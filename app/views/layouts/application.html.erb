@@ -191,10 +191,9 @@ input[type="checkbox"]{
     <ul>
       
       <% if user_signed_in? %>
-          <li><strong> <%= link_to "Home" , root_path %>  </a></li>
-          <li>
-          <a> <%= link_to "Salir", destroy_user_session_path, method: :delete %> </a> 
-          </li>
+          <li><a> <%= link_to "Home" , root_path %>  </a></li>
+          <li><a> <%= link_to "EditarPerfil", edit_user_registration_path %>  </a></li>
+          <li><a> <%= link_to "Salir", destroy_user_session_path, method: :delete %> </a></li>
       <% else %>
           <li><a> <%= link_to "Home" , root_path %></a></li>
           <br>
