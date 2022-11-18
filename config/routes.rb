@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'usuarios/show'
   get 'usuarios/index'
   get 'usuarios/new'
+  get 'usuarios/cambiarrol'
 
   get 'autos/dejar'
   get 'autos/alquilar'

@@ -13,6 +13,13 @@ class UsuariosController < ApplicationController
     @admins = User.where(rol:0)
   end
 
+  def cambiarrol
+    @a = User.find(params[:id])
+    @a.rol = 1
+    @a.save
+    redirect_to usuarios_index_path
+  end
+
   def new
   end
 end
