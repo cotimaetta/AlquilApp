@@ -20,9 +20,8 @@ class AutosController < ApplicationController
     @auto = Auto.find(params[:auto][:id])
     @auto.update(auto_params)
     
-    if(@auto.fueraDelCasco?)  
+    if(@auto.fueraDelCasco?)
       @auto.alquilado = false
-      @auto.descripcion = @auto.location_point_y
       @auto.save
       @historial = HistorialUso.where(auto_id: @auto.id).last
       HistorialUso.last.update(fechaFinal: DateTime.now)
