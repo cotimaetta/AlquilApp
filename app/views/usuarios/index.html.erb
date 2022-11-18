@@ -1,2 +1,71 @@
-<h1>Usuarios#index</h1>
-<p>Find me in app/views/usuarios/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validacion usurios</title>
+    <link rel="stylesheet" href="../../assests/stylesheets/aplication.css">
+</head>
+<style>
+    .parent {
+      display: flex;
+      justify-content: space-between;
+      width:100%;
+      padding:20px;
+    }
+    .child {
+      flex: 40%
+    }
+    
+</style>
+<body>
+    
+    <% if user_signed_in? %>
+        
+        <% if current_user.admin? %>
+            <h2> Todos los usuarios </h2>
+            <div class="parent">
+                <div class="child">
+                    <h3> Usuarios sin validar </h3>
+                    <% @sinValidar.each do |u| %>
+                        <ul>
+                            <%= u.nombre %>  <%= u.apellido %> <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                        </ul>
+                    <% end %>
+                </div>
+            
+                <div class="child">
+                    <h3> Usuarios validados </h3>
+                    <% @validados.each do |u| %>
+                        <ul>
+                            <%= u.nombre %>  <%= u.apellido %> <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                        </ul>
+                    <% end %>
+                </div>  
+
+                <div class="child">
+                    <h3> Supervisores </h3>
+                    <% @supervisores.each do |u| %>
+                        <ul>
+                            <%= u.nombre %>  <%= u.apellido %> <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                        </ul>
+                    <% end %>
+                </div>    
+                <div class="child">
+                    <h3> Aministradores </h3>
+                    <% @admins.each do |u| %>
+                        <ul>
+                            <%= u.nombre %>  <%= u.apellido %> <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                        </ul>
+                    <% end %>
+                </div>      
+            </div>
+
+        <% end %>
+        <%= link_to 'Volver' , root_path%>
+    <% else %>
+        <h1>AlquilApp </h1>
+    <% end %>
+
+</body>

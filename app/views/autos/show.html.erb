@@ -112,9 +112,9 @@
         </div>
         
         <% if !current_user.usuario? %>
-        <div class="child">
-            <div class="content"><%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id), class: "btn btn-light"  %></div>
-        </div>
+          <div class="child">
+              <div class="content"><%= link_to "VER DOCUMENTACION" , autos_mostrardocumentacion_path(:id => @auto.id), class: "btn btn-light"  %></div>
+          </div>
         <% end %>
         
       </div>
