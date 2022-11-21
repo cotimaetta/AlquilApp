@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   # variables
   enum rol: [:admin, :supervisor, :usuario]
+  enum validacion: [:rechazado, :validado, :sinValidar]
  
   def menor
     if(usuario?)

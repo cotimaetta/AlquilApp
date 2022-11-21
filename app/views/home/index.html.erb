@@ -34,12 +34,19 @@
                     <%= render 'fotousers/form', fotouser: @fotouser %>
                 <%end%>
             <%else%>
-                <% if current_user.validacion? %>
-                    <p> Saldo: <%= current_user.saldo %> </p>
-                    <%= link_to "listado de autos para alquilar", autos_path%>
-                <% else %>
+                <% if current_user.sinValidar? %>
                     <p> Para poder alquilar un auto debe ser validado por un supervisor </p>
                     <p> Sea paciente.. </p>
+                <% end %>
+                <% if current_user.validado? %>
+                    <p> Saldo: <%= current_user.saldo %> </p>
+                    <%= link_to "listado de autos para alquilar", autos_path%>
+                <% end %>
+                <% if current_user.rechazado? %>
+                    <p> Un supervisor ha rechazado su solicitud, </p>
+                    <p> Verifique que su documento y licencia de conducir sean validos </p>
+                    <p> Y subalos nuevamente..  </p>
+                    <h2> ACA SE HACE UPDATE DE FOTOUSER, pero no se como se hace xD </h3>
                 <% end %>
             <%end%>
 

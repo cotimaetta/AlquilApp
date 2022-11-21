@@ -7,8 +7,8 @@ class UsuariosController < ApplicationController
 
   def index
     @usuarios = User.all
-    @sinValidar = User.where(validacion: false, rol:2)
-    @validados = User.where(validacion: true, rol:2)
+    @sinValidar = User.where(validacion: 2, rol:2)
+    @validados = User.where(validacion: 1, rol:2)
     @supervisores = User.where(rol:1)
     @admins = User.where(rol:0)
   end

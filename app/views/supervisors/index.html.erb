@@ -35,38 +35,76 @@
       padding:20px;
     }
     .child {
-      flex: 0 1 300px;
-      flex: 1 1 300px;
+      flex: 40%;
       text-align: center;
+      padding:50px;
     }
-    
+    table{
+        table-layout: fixed;
+    }
+
+    th, td {
+        width: 400px;
+        word-wrap: break-word;
+    }
+
 </style>
 <body>
     
     <% if user_signed_in? %>
         
         <% if current_user.supervisor? %>
-            <h1>Usuarios a validar</h1>
-            <table>
-            <th> 
-                <tr> Nombre </tr> 
-                <tr> Apellido </tr> 
-                <tr> Fecha vencimiento  </tr> 
-            </th>
-            <% @sinValidar.each do |u| %>
-                <% @foto = Fotouser.find_by("id_user": u.id)%>
-                
-                <% if @foto != nil %>
-                <tr>
-                    <td>
-                        <%=  u.nombre %> <%= u.apellido %> <%= u.fecha_ven %>
-                        <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
-                    </td>
-                </tr>
-                <% end %>
-                
-            <% end %>
-            </table>
+            <h2> Todos los usuarios </h2>
+            <div class="parent">
+                <div class="child">
+                    <h1>Usuarios sin validar</h1>
+                    <table>
+                    <th> 
+                        <tr> Nombre </tr> 
+                        <tr> Apellido </tr> 
+                        <tr> Fecha vencimiento  </tr> 
+                    </th>
+                    <% @sinValidar.each do |u| %>
+                        <% @foto = Fotouser.find_by("id_user": u.id)%>
+                        
+                        <% if @foto != nil %>
+                        <tr>
+                            <td>
+                                <%=  u.nombre %> <%= u.apellido %> <%= u.fecha_ven %>
+                                <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                            </td>
+                        </tr>
+                        <% end %>
+                        
+                    <% end %>
+                    </table>
+                </div>
+            
+                <div class="child">
+                    <h1>Usuarios rechazados</h1>
+                    <table>
+                    <th> 
+                        <tr> Nombre </tr> 
+                        <tr> Apellido </tr> 
+                        <tr> Fecha vencimiento  </tr> 
+                    </th>
+                    <% @rechazados.each do |u| %>
+                        <% @foto = Fotouser.find_by("id_user": u.id)%>
+                        
+                        <% if @foto != nil %>
+                        <tr>
+                            <td>
+                                <%=  u.nombre %> <%= u.apellido %> <%= u.fecha_ven %>
+                                <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
+                            </td>
+                        </tr>
+                        <% end %>
+                        
+                    <% end %>
+                    </table>
+                </div>   
+            </div>
+
             <p> <%= link_to 'Volver inicio', root_path%></p>
         <% end %>
     <% else %>

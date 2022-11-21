@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_09_143144) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_204441) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_143144) do
     t.date "fecha_ven"
     t.float "saldo", default: 10000.0
     t.integer "rol", default: 2
-    t.boolean "validacion", default: false
+    t.integer "validacion", default: 2
     t.integer "pos"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

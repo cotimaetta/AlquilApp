@@ -26,10 +26,14 @@
 
     <% if @usuario.usuario? %>
     <p>Fecha de vencimiento licencia conducir: <%=@usuario.fecha_ven%></p>
-        <% if @usuario.validacion == false %>
+        <% if @usuario.sinValidar? %>
             <h5> Usuario no validado </h5>
         <%else%>  
-            <h5> Usuario validado </h5>
+            <% if @usuario.validado? %>
+                <h5> Usuario validado </h5>
+            <% else  %>
+                <h5> Usuario rechazado </h5>
+            <% end%>
         <% end %> 
     <% end %>
 
@@ -42,8 +46,9 @@
                     <%= image_tag @foto.fotoCarnet%>
                     </div> 
 
-                    <% if current_user.supervisor? && @usuario.validacion == false  %>
-                        <%= link_to 'validar', supervisors_validar_path(:id => @usuario.id), method: "validar", class: "btn btn-light" %>
+                    <% if current_user.supervisor? && !@usuario.validado?  %>
+                        <%= link_to 'Validar', supervisors_validar_path(:id => @usuario.id), method: "validar", class: "btn btn-light" %>
+                        <%= link_to 'Desaprobar', supervisors_desaprobar_path(:id => @usuario.id), method: "desaprobar", class: "btn btn-light" %>
                     <% end %>
 
                 <% end %>
