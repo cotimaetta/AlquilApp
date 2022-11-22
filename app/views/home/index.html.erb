@@ -40,7 +40,11 @@
                 <% end %>
                 <% if current_user.validado? %>
                     <p> Saldo: <%= current_user.saldo %> </p>
-                    <%= link_to "listado de autos para alquilar", autos_path%>
+                    <% if current_user.saldo >= 0  %>
+                        <%= link_to "listado de autos para alquilar", autos_path%>
+                    <% else %>
+                        Usted posee saldo negativo por lo que no podra ver los autos disponibles
+                    <% end %>
                 <% end %>
                 <% if current_user.rechazado? %>
                     <p> Un supervisor ha rechazado su solicitud, </p>
