@@ -16,12 +16,13 @@ class AutosController < ApplicationController
 
   def dejar
     @auto = Auto.find(params[:id_auto])
-    @historial = HistorialUso.where(auto_id: @auto.id).first
+    @historial = HistorialUso.where(auto_id: @auto.id).last
   end
 
   def verificarDejar
     @auto = Auto.find(params[:auto][:id])
     @auto.update(auto_params)
+    @auto.update(desbloqueado: false)
     @user = User.find(current_user.id)
 
     if(@auto.fueraDelCasco?)  
