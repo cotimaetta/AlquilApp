@@ -19,11 +19,20 @@ class AutosController < ApplicationController
   def verificarDejar
     @auto = Auto.find(params[:auto][:id])
     @auto.update(auto_params)
-    
-    if(@auto.fueraDelCasco?)
+    @user = User.find(current_user.id)
+
+    if(@auto.fueraDelCasco?)  
       @auto.alquilado = false
+      @auto.descripcion = @user.nombre
       @auto.save
       @historial = HistorialUso.where(auto_id: @auto.id).last
+      #ver si el user se paso
+      if(DateTime.now > @historial.fechaInicio+@historial.cantHoras.hours+@historial.horasExtra.hours)
+        @tiempo = @historial.fechaInicio + @historial.cantHoras.hours + @historial.horasExtra.hours
+        @tiempoRestante = Integer((@tiempo - DateTime.now)/15.minutes)
+        @user.saldo = @user.saldo - @tiempoRestante
+        @user.save
+      end
       HistorialUso.last.update(fechaFinal: DateTime.now)
       redirect_to historial_uso_path(:id => @historial.id)
     else
