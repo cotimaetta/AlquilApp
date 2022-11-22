@@ -9,7 +9,7 @@ class AutosController < ApplicationController
 
   def mientrasalquiler
     @auto = Auto.find(params[:id])
-    @historial = HistorialUso.find_by(auto_id: @auto.id)
+    @historial = HistorialUso.where(auto_id: @auto.id).last
     @hora = @historial.fechaInicio + @historial.cantHoras.hours + @historial.horasExtra.hours
     @horasRestantes = ((@hora - DateTime.now)/1.hour).round(0)
   end
