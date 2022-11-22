@@ -33,7 +33,7 @@ class AutosController < ApplicationController
       if(DateTime.now > @historial.fechaInicio+@historial.cantHoras.hours+@historial.horasExtra.hours)
         @tiempo = @historial.fechaInicio + @historial.cantHoras.hours + @historial.horasExtra.hours
         @tiempoRestante = Integer((@tiempo - DateTime.now)/15.minutes)
-        @user.saldo = @user.saldo - @tiempoRestante
+        @user.saldo = @user.saldo + @tiempoRestante
         @user.save
       end
       HistorialUso.last.update(fechaFinal: DateTime.now)
