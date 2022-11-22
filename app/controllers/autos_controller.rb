@@ -28,7 +28,7 @@ class AutosController < ApplicationController
       @auto.alquilado = false
       @auto.descripcion = @user.nombre
       @auto.save
-      @historial = HistorialUso.where(auto_id: @auto.id).fist
+      @historial = HistorialUso.where(auto_id: @auto.id).last
       #ver si el user se paso
       if(DateTime.now > @historial.fechaInicio+@historial.cantHoras.hours+@historial.horasExtra.hours)
         @tiempo = @historial.fechaInicio + @historial.cantHoras.hours + @historial.horasExtra.hours
