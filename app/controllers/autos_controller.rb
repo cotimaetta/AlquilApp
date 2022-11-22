@@ -32,7 +32,7 @@ class AutosController < ApplicationController
       #ver si el user se paso
       if(DateTime.now > @historial.fechaInicio+@historial.cantHoras.hours+@historial.horasExtra.hours)
         @tiempo = @historial.fechaInicio + @historial.cantHoras.hours + @historial.horasExtra.hours
-        @tiempoRestante = (Integer((@tiempo - DateTime.now)/15.minutes)+1)*1000
+        @tiempoRestante = (Integer((@tiempo - DateTime.now)/15.minutes))*1000
         @user.saldo = @user.saldo + @tiempoRestante
         @user.save
       end
