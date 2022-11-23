@@ -66,8 +66,7 @@
                     </th>
                     <% @sinValidar.each do |u| %>
                         <% @foto = Fotouser.find_by("id_user": u.id)%>
-                        
-                        <% if @foto != nil %>
+                        <% if @foto != nil && u.fecha_ven >= DateTime.now %>
                         <tr>
                             <td>
                                 <%=  u.nombre %> <%= u.apellido %> <%= u.fecha_ven %>

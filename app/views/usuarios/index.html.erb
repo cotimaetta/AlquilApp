@@ -51,15 +51,7 @@
                             <%= u.nombre %>  <%= u.apellido %> <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
                         </ul>
                     <% end %>
-                </div>    
-                <div class="child">
-                    <h3> Aministradores </h3>
-                    <% @admins.each do |u| %>
-                        <ul>
-                            <%= u.nombre %>  <%= u.apellido %> <%= link_to 'ver detalle', usuarios_show_path(:id => u.id)%>
-                        </ul>
-                    <% end %>
-                </div>      
+                </div>       
             </div>
 
         <% end %>

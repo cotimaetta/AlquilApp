@@ -40,8 +40,6 @@ class Auto < ApplicationRecord
                     errors.add(:base, message:"La patente no esta bien escrita" )
                 end   
             end 
-        else 
-            errors.add(:base, message:"la patente no puede estar vacia")
         end
         
     end 

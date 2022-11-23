@@ -25,7 +25,7 @@
         <% if current_user.usuario? %>
 
             <% @fotouser = Fotouser.find_by(id_user: current_user.id) %>
-            <%if @fotouser == nil%>    
+            <%if @fotouser == nil %>    
                 <h3> Ultimos pasos para finalizar tu registro.. </h3>
                 <p> Ingresa foto de carnet y de conducir </p>            
                 <%@fotouser = Fotouser.new%>
@@ -34,24 +34,32 @@
                     <%= render 'fotousers/form', fotouser: @fotouser %>
                 <%end%>
             <%else%>
-                <% if current_user.sinValidar? %>
-                    <p> Para poder alquilar un auto debe ser validado por un supervisor </p>
-                    <p> Sea paciente.. </p>
-                <% end %>
-                <% if current_user.validado? %>
-                    <p> Saldo: <%= current_user.saldo %> </p>
-                    <% if current_user.saldo >= 0  %>
-                        <%= link_to "listado de autos para alquilar", autos_path%>
-                    <% else %>
-                        Usted posee saldo negativo por lo que no podra ver los autos disponibles
+
+                <% if current_user.fecha_ven <= DateTime.now %>
+                    <p> Licencia de conducir vencida </p>
+                    <p> Verifique y actualice sus datos </p>
+                    <p> Y espere a ser validado nuevamente..  </p>
+                    <%= link_to "Modificar Perfil", edit_user_registration_path %>
+                <%else%>    
+                    <% if current_user.sinValidar? %>
+                        <p> Para poder alquilar un auto debe ser validado por un supervisor </p>
+                        <p> Sea paciente.. </p>
                     <% end %>
-                <% end %>
-                <% if current_user.rechazado? %>
-                    <p> Un supervisor ha rechazado su solicitud, </p>
-                    <p> Verifique que su documento y licencia de conducir sean validos </p>
-                    <p> Y subalos nuevamente..  </p>
-                    <%= link_to "Cambiar foto", fotousers_edit_path(:id => current_user.id) %>
-                <% end %>
+                    <% if current_user.validado? %>
+                        <p> Saldo: <%= current_user.saldo %> </p>
+                        <% if current_user.saldo >= 0  %>
+                            <%= link_to "listado de autos para alquilar", autos_path%>
+                        <% else %>
+                            Usted posee saldo negativo por lo que no podra ver los autos disponibles
+                        <% end %>
+                    <% end %>
+                    <% if current_user.rechazado? %>
+                        <p> Un supervisor ha rechazado su solicitud, </p>
+                        <p> Verifique que su documento y licencia de conducir sean validos </p>
+                        <p> Y subalos nuevamente..  </p>
+                        <%= link_to "Cambiar foto", fotousers_edit_path(:id => current_user.id) %>
+                    <% end %>
+                <%end%>
             <%end%>
 
         <% end %>
