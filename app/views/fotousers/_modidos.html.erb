@@ -1,0 +1,16 @@
+<p><%id_user = @fotouser.id_user%></p>
+
+<% fotouser.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+  <% end %>
+
+<%= form_for :fotouser, url: fotousers_modificardos_path(fotouser) do |f| %>
+    <%= f.hidden_field :id_user %>
+
+    <div><%= f.label :foto_DNI%></div>
+    <div><%= f.file_field :fotoDNI , accept: 'image/png,image/jpeg', as: :file %></div>
+    <div><%= f.label :foto_carnet%></div>
+    <div><%= f.file_field :fotoCarnet , accept: 'image/png,image/jpeg', as: :file %></div>
+    
+    <%= f.submit 'Guardar' %> 
+<% end %>

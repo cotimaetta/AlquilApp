@@ -30,11 +30,18 @@ class FotousersController < ApplicationController
     end
   end
 
+  def editdos
+    @user = User.find(params[:id])
+    @fotouser = Fotouser.where(id_user: params[:id]).last
+    @user.validacion = 2
+    @user.save
+  end
+
   def modificardos
     @foto = Fotouser.where(id_user: fotouser_params[:id_user]).last
     @user = User.find(fotouser_params[:id_user])
     if @foto.update(fotouser_params)
-      redirect_to edit_user_registration_path(@user)
+      redirect_to root_path
     else
       format.html { render :new }
       format.json { render json: @user.errors, status: :unprocessable_entity }
