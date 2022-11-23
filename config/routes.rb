@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'fotousers/modificar'
   patch 'fotousers/modificar'
+  patch 'fotousers/modificardos'
   get 'fotousers/edit'
 
 
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
 
 
   resources :supervisors, only:[:create, :index, :new, :show, :validar, :desaprobar]
-  resources :fotousers, only:[:create, :index, :new, :show, :modificar, :edit]
+  resources :fotousers, only:[:create, :index, :new, :show, :modificar, :modificardos, :edit]
   resources :autos, only:[:create, :index, :new, :show, :alquilar, :verificarDejar, :dejar, :update, :mostrardocumentacion, :mientrasalquiler, :desbloquear]
   devise_for :users, :controllers => { registrations: 'registrations'}
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   get "autos/verificarDejar"     => "autos#verificarDejar"
 
   post "fotousers/modificar"     => "fotousers#modificar"
+  post "fotousers/modificardos"     => "fotousers#modificardos"
   get "fotousers/modificar"     => "fotousers#modificar"
 
 
