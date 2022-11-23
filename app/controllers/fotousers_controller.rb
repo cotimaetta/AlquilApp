@@ -12,6 +12,23 @@ class FotousersController < ApplicationController
     @user = User.find(@fotouser.id_user)
   end
 
+  def edit
+    @fotouser = Fotouser.find(params[:id])
+  end
+
+  def update
+    @foto = Fotouser.find(params[:id])
+    foto.fotoCarnet.attach(params[:post][:fotoCarnet])
+    foto.fotoDNI.attach(params[:post][:fotoDNI])
+    if @foto.save
+      format.html { redirect_to @foto, notice: 'Post was successfully created.' }
+      format.json { render :show, status: :created, location: @user }
+    else
+      format.html { render :new }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
+    end
+  end
+
   def create
     @fotouser = Fotouser.new(fotouser_params)
     if @fotouser.save

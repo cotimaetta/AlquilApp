@@ -45,3 +45,5 @@
 <p><%= t('.unhappy', :default => 'Unhappy') %>? <%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete %>.</p>
 
 <%= link_to "Volver", root_path %>
+
+<%= link_to "Cambiar foto", fotousers_edit_path(:id => current_user.id) %>
