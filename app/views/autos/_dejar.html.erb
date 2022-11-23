@@ -15,5 +15,5 @@ navigator.geolocation.getCurrentPosition((pos) => {
   <%= f.hidden_field :location_point_y %>
   <%= f.hidden_field :id %>
 
-  <%= f.submit 'dejar el auto' %> 
+  <%= f.submit 'dejar el auto', class: "btn btn-light"  %> 
 <% end %>
