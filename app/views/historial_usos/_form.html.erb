@@ -1,32 +1,45 @@
-<% id = current_user.id%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+div{
+    padding: 1px;
+  }
+</style>
+<body>
+    <% id = current_user.id%>
+    <%= form_with(model: historial_uso) do |form| %>
+      <% if historial_uso.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(historial_uso.errors.count, "error") %> prohibited this historial_uso from being saved:</h2>
 
-<%= form_with(model: historial_uso) do |form| %>
-  <% if historial_uso.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(historial_uso.errors.count, "error") %> prohibited this historial_uso from being saved:</h2>
+          <ul>
+            <% historial_uso.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-      <ul>
-        <% historial_uso.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div>
+        <%= form.label :cantHoras, style: "display: block" %>
+        <%= form.number_field :cantHoras, in:1..24 %>
+      </div>
 
-  <div>
-    <%= form.label :cantHoras, style: "display: block" %>
-    <%= form.number_field :cantHoras, in:1..24 %>
-  </div>
+      <div>
+        <%= form.hidden_field :user_id, value: id %>
+      </div>
 
-  <div>
-    <%= form.hidden_field :user_id, value: id %>
-  </div>
+      <div>
+        <%= form.hidden_field :auto_id %>
+      </div>
 
-  <div>
-    <%= form.hidden_field :auto_id %>
-  </div>
+      <div>
+        <%= form.submit 'Guardar cantidad horas', class: "btn btn-light"  %>
+      </div>
+    <% end %>
 
-  <div>
-    <%= form.submit 'Guardar cantidad horas' %>
-  </div>
-<% end %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
