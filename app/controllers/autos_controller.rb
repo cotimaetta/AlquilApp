@@ -27,7 +27,6 @@ class AutosController < ApplicationController
 
     if(@auto.fueraDelCasco?)  
       @auto.alquilado = false
-      @auto.descripcion = @user.nombre
       @auto.save
       @historial = HistorialUso.where(auto_id: @auto.id).last
       #ver si el user se paso

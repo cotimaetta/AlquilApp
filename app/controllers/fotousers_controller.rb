@@ -19,13 +19,11 @@ class FotousersController < ApplicationController
     @user.save
   end
 
-  def update
-    @foto = Fotouser.where(id_user: params[:id]).last
-    foto.fotoCarnet.attach(params[:post][:fotoCarnet])
-    foto.fotoDNI.attach(params[:post][:fotoDNI])
-    if @foto.save
-      format.html { redirect_to @foto, notice: 'Post was successfully created.' }
-      format.json { render :show, status: :created, location: @user }
+  def modificar
+    @foto = Fotouser.where(id_user: fotouser_params[:id_user]).last
+    @user = User.find(fotouser_params[:id_user])
+    if @foto.update(fotouser_params)
+      redirect_to edit_user_registration_path(@user)
     else
       format.html { render :new }
       format.json { render json: @user.errors, status: :unprocessable_entity }
