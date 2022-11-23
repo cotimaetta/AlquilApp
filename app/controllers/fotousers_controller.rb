@@ -13,11 +13,14 @@ class FotousersController < ApplicationController
   end
 
   def edit
-    @fotouser = Fotouser.find(params[:id])
+    @user = User.find(params[:id])
+    @fotouser = Fotouser.find_by(id_user: params[:id])
+    @user.validacion = 2
+    @user.save
   end
 
   def update
-    @foto = Fotouser.find(params[:id])
+    @foto = Fotouser.find_by(id_user: params[:id])
     foto.fotoCarnet.attach(params[:post][:fotoCarnet])
     foto.fotoDNI.attach(params[:post][:fotoDNI])
     if @foto.save
