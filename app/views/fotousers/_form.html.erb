@@ -6,8 +6,10 @@
 
 <%= form_for :fotouser, url: fotousers_path do |f| %>
     <%= f.hidden_field :id_user %>
-
+    
+    <div><%= f.label :foto_DNI%></div>
     <div><%= f.file_field :fotoDNI , accept: 'image/png,image/jpeg' %></div>
+    <div><%= f.label :foto_carnet%></div>
     <div><%= f.file_field :fotoCarnet , accept: 'image/png,image/jpeg' %></div>
     
     <%= f.submit 'Guardar' %> 

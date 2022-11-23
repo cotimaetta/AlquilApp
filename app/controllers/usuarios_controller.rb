@@ -1,8 +1,7 @@
 class UsuariosController < ApplicationController
   def show
     @usuario = User.find(params[:id])
-    @foto = Fotouser.find_by("id_user": @usuario.id)
-
+    @foto = Fotouser.where(id_user: params[:id]).last
   end
 
   def index
