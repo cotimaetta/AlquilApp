@@ -28,11 +28,13 @@ class AutosController < ApplicationController
     if(@user.nombre = "dentro")
       @auto.location_point_x = -34.92089463861315
       @auto.location_point_y = -57.95628985496138
+      @auto.save
     end
 
     if(@user.nombre = "fuera")
       @auto.location_point_x = -34.86247155936304
       @auto.location_point_y = -57.901935717209724
+      @auto.save
     end
 
     if(@auto.fueraDelCasco?)  
@@ -101,6 +103,8 @@ class AutosController < ApplicationController
 
   def create
     @auto = Auto.new(auto_params)
+    @auto.location_point_x =
+    @auto.location_point_y = 
     if @auto.save
       redirect_to @auto
     else
